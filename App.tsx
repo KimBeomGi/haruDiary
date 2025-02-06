@@ -25,13 +25,15 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import AppNavigator from './src/navigations/AppNavigator';
+
 import { store } from './store/store'
 import { Provider } from 'react-redux'
 
-import HomeScreen from './screens/HomeScreen'
-import TestScreen1 from './screens/TestScreen1';
-import TestScreen2 from './screens/TestScreen2';
-import TestScreen3 from './screens/TestScreen2';
+import HomeScreen from './src/screens/HomeScreen'
+import TestScreen1 from './src/screens/TestScreen1';
+import TestScreen2 from './src/screens/TestScreen2';
+import TestScreen3 from './src/screens/TestScreen2';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -40,40 +42,10 @@ import type {
   NavigatorScreenParams,
 } from '@react-navigation/native';
 
-export type RootStackParamList = {
-  // Home: NavigatorScreenParams<HomeTabParamList>;
-  Home: undefined
-  // PostDetails: { id: string };
-  Test1: undefined;
-  Test2: undefined;
-  Test3: undefined;
-};
-
-// export type HomeTabParamList = {
-//   Popular: undefined;
-//   Latest: undefined;
-// };
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
-
-
 function App(): React.JSX.Element {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Home"
-          screenOptions={({ route, navigation }) => ({
-            headerShown: false,
-            // gestureEnabled: true,
-          })}
-        >
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Test1" component={TestScreen1} />
-          <Stack.Screen name="Test2" component={TestScreen2} />
-          <Stack.Screen name="Test3" component={TestScreen3} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <AppNavigator/>
     </Provider>
   );
 }

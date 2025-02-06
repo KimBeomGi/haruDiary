@@ -2,9 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, Button } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../App'; // RootStackParamList를 가져옵니다.
+import { RootStackParamList } from '../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
 
-import type { RootState } from '../store/store'
+import type { RootState } from '../../store/store'
 import { useSelector, useDispatch } from 'react-redux'
 
 type TestScreen2NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Test2'>;

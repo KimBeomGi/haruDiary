@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { Button, SafeAreaView, Text, View, BackHandler, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../App'; // RootStackParamList를 가져옵니다.
+import { RootStackParamList } from '../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
 
-import type { RootState } from '../store/store'
+import type { RootState } from '../../store/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, incrementByAmount } from '../store/counter/counterSlice';
+import { decrement, increment, incrementByAmount } from '../../store/counter/counterSlice';
 
 // NavigationProp 타입을 설정합니다.
 type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
