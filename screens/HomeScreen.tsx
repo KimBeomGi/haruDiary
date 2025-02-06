@@ -4,12 +4,17 @@ import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App'; // RootStackParamList를 가져옵니다.
 
+import type { RootState } from '../store/store'
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment, incrementByAmount } from '../store/counter/counterSlice';
+
 // NavigationProp 타입을 설정합니다.
 type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
-
 function HomeScreen(): React.JSX.Element {
   const navigation = useNavigation<HomeScreenNavigationProp>()
+  const count = useSelector((state: RootState) => state.counter.value)
+  const dispatch = useDispatch()
   
   useEffect(() => {
     const backAction = () => {
@@ -55,6 +60,23 @@ function HomeScreen(): React.JSX.Element {
         onPress={() => {
           navigation.navigate('Test2')
         }}
+      />
+      <Text>현재 갯수는 : {count}개</Text>
+      <Button
+        title='1씩 증가'
+        onPress={() => {return(dispatch(increment()))}}
+      />
+      <Button
+        title='1씩 감소'
+        onPress={() => {return(dispatch(decrement()))}}
+      />
+      <Button
+        title='5씩 증가'
+        onPress={() => {return(dispatch(incrementByAmount(5)))}}
+      />
+      <Button
+        title='3씩 감소'
+        onPress={() => {return(dispatch(incrementByAmount(-3)))}}
       />
     </SafeAreaView>
     

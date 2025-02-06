@@ -1,14 +1,20 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, Text, View, Button } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App'; // RootStackParamList를 가져옵니다.
+
+import type { RootState } from '../store/store'
+import { useSelector, useDispatch } from 'react-redux'
 
 type TestScreen1NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Test1'>;
 
 
 function TestScreen1(): React.JSX.Element {
   const navigation = useNavigation<TestScreen1NavigationProp>()
+  const count = useSelector((state: RootState) => state.counter.value)
+  const dispatch = useDispatch()
+
   return (
     <SafeAreaView>
       <View>
@@ -34,6 +40,7 @@ function TestScreen1(): React.JSX.Element {
           navigation.navigate('Test2')
         }}
       />
+      <Text>현재 갯수는 : {count}개</Text>
     </SafeAreaView>
     
   );
