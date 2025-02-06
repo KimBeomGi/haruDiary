@@ -26,16 +26,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import HomeScreen from './screens/HomeScreen'
-import TestScreen1 from './screens/TestScreen1';
-import TestScreen2 from './screens/TestScreen2';
-import TestScreen3 from './screens/TestScreen2';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import type {
-  CompositeScreenProps,
-  NavigatorScreenParams,
-} from '@react-navigation/native';
+import TestsCreen1 from './screens/TestScreen1';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -67,45 +58,49 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
-
-export type RootStackParamList = {
-  // Home: NavigatorScreenParams<HomeTabParamList>;
-  Home: undefined
-  // PostDetails: { id: string };
-  Test1: undefined;
-  Test2: undefined;
-  Test3: undefined;
-};
-
-// export type HomeTabParamList = {
-//   Popular: undefined;
-//   Latest: undefined;
-// };
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
-
-
 function App(): React.JSX.Element {
-  // const isDarkMode = useColorScheme() === 'dark';
-  // const backgroundStyle = {
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={({ route, navigation }) => ({
-          headerShown: false,
-          // gestureEnabled: true,
-        })}
-      >
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Test1" component={TestScreen1} />
-        <Stack.Screen name="Test2" component={TestScreen2} />
-        <Stack.Screen name="Test3" component={TestScreen3} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={backgroundStyle}>
+      <HomeScreen/>
+      <TestsCreen1/>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
+        <Header />
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          }}>
+          <Section title='초기 생성 성공'>
+            <Text>생성 성공</Text>
+          </Section>
+          <Section title="Step One">
+            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+            screen and then come back to see your edits.
+          </Section>
+          <Section title="See Your Changes">
+            <ReloadInstructions />
+          </Section>
+          <Section title="Debug">
+            <DebugInstructions />
+          </Section>
+          <Section title="Learn More">
+            Read the docs to discover what to do next:
+          </Section>
+          <LearnMoreLinks />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
