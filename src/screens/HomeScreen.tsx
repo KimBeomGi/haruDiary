@@ -3,39 +3,45 @@ import { Button, SafeAreaView, Text, View, BackHandler, Alert } from 'react-nati
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
+import { RouteProp } from '@react-navigation/native';
+
 
 import type { RootState } from '../../store/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, incrementByAmount } from '../../store/counter/counterSlice';
 
 // NavigationProp 타입을 설정합니다.
-type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+// type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+type HomeScreenNavigationProp = {
+  navigation: NativeStackNavigationProp<RootStackParamList>;
+  route: RouteProp<RootStackParamList, 'Home'>;
+};
 
-function HomeScreen(): React.JSX.Element {
-  const navigation = useNavigation<HomeScreenNavigationProp>()
+function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.Element {
+  // const navigation = useNavigation<HomeScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
   
-  useEffect(() => {
-    const backAction = () => {
-      Alert.alert("잠깐만요!", "정말 끝낼거에요?", [
-        {
-          text: 'Cancel',
-          onPress: () => null,
-          style: 'cancel',
-        },
-        {text: 'YES', onPress: () => BackHandler.exitApp()},
-      ]);
-      return true;
-    };
+  // useEffect(() => {
+  //   const backAction = () => {
+  //     Alert.alert("잠깐만요!", "정말 끝낼거에요?", [
+  //       {
+  //         text: 'Cancel',
+  //         onPress: () => null,
+  //         style: 'cancel',
+  //       },
+  //       {text: 'YES', onPress: () => BackHandler.exitApp()},
+  //     ]);
+  //     return true;
+  //   };
 
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      backAction,
-    );
+  //   const backHandler = BackHandler.addEventListener(
+  //     'hardwareBackPress',
+  //     backAction,
+  //   );
 
-    return () => backHandler.remove();
-  }, []);
+  //   return () => backHandler.remove();
+  // }, []);
 
   return (
     <SafeAreaView>
