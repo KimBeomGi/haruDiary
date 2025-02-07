@@ -1,69 +1,46 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Button,
-  Pressable,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 import { useNavigation } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React, { useState } from 'react';
+import { SafeAreaView, Text, View, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
 import { RouteProp } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux'
+import type { RootState } from '../../store/store'; 
 
-import type {
-  CompositeScreenProps,
-  NavigatorScreenParams,
-} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-// NavigationProp 타입을 설정합니다.
-type HeaderComponentProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList>;
-};
+type HeaderComponentNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-function HeaderComponent({ navigation }: HeaderComponentProps): React.JSX.Element {
+
+function HeaderComponent(): React.JSX.Element {
+  const navigation = useNavigation<HeaderComponentNavigationProp>()
+  const count = useSelector((state: RootState) => state.counter.value)
+  const dispatch = useDispatch()
+
   return (
-    <View style={styles.container}>
-      <Pressable 
-        onPress={() => {
-          navigation.reset({
-            index : 0,
-            routes: [{ name: 'Home'}]
-          })
-        }}
-      >
-        <Text>홈으로 가보자</Text>
-      </Pressable>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <TouchableOpacity>
+        <Text>
+          <Icon name="laptop-chromebook" color="#5d00fd55" size={24} />
+        </Text>
+      </TouchableOpacity>
+      {/* <Button
+        title='홈'
+        onPress={() => {navigation.navigate('Home')}}
+      /> */}
+    </SafeAreaView>
+    
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     padding: 16,
-    backgroundColor: '#f8f8f8', // 예시 배경색
+    backgroundColor: '#eee',
+    borderTopWidth: 1,
+    // borderTopColor: '#eee',
   },
 });
 
