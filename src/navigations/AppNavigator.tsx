@@ -30,9 +30,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HeaderComponent from '../components/HeaderComponent';
 import HomeScreen from '../screens/HomeScreen';
-import TestScreen1 from '../screens/TestScreen1';
-import TestScreen2 from '../screens/TestScreen2';
-import TestScreen3 from '../screens/TestScreen2';
 import ProfileMainScreen from '../screens/profile/ProfileMainScreen';
 import DetailPostScreen from '../screens/reads/DetailPostScreen';
 import WritePostScreen from '../screens/wirtes/WritePostScreen';
@@ -48,9 +45,6 @@ export type RootStackParamList = {
   // Home: NavigatorScreenParams<HomeTabParamList>;
   Home: undefined
   // PostDetails: { id: string };
-  Test1: undefined;
-  Test2: undefined;
-  Test3: undefined;
   ProfileMain: undefined;
   DetailPost: undefined;
   WritePost: undefined;
@@ -77,9 +71,6 @@ function AppNavigator(): React.JSX.Element {
         })}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Test1" component={TestScreen1} />
-        <Stack.Screen name="Test2" component={TestScreen2} />
-        <Stack.Screen name="Test3" component={TestScreen3} />
         <Stack.Screen name="ProfileMain" component={ProfileMainScreen} />
         <Stack.Screen name="DetailPost" component={DetailPostScreen} />
         <Stack.Screen name="WritePost" component={WritePostScreen} />

@@ -19,7 +19,9 @@ function HeaderComponent(): React.JSX.Element {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {navigation.navigate('Home')}}
+      >
         <Text>
           <Icon name="laptop-chromebook" color="#5d00fd55" size={24} />
         </Text>

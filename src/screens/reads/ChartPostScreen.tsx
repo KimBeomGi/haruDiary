@@ -1,13 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, Button } from 'react-native';
+import { SafeAreaView, Text, View, Button, ScrollView, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
 
 import type { RootState } from '../../../store/store'; 
 import { useSelector, useDispatch } from 'react-redux'
+import BottomComponent from '../../components/BottomComponent';
 
-type ChartPostScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Test1'>;
+type ChartPostScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'ChartPost'>;
 
 
 function ChartPostScreen(): React.JSX.Element {
@@ -16,39 +17,45 @@ function ChartPostScreen(): React.JSX.Element {
   const dispatch = useDispatch()
 
   return (
-    <SafeAreaView>
-      <View>
-        <Text>ChartPostScreen</Text>
-        <Text>잘되나</Text>
-      </View>
-      <Button
-        title='프로필'
-        onPress={() => {
-          // navigation.navigate('Home')
-          navigation.navigate('ProfileMain')
-        }}
-      />
-      <Button
-        title='포스트 자세히 보기'
-        onPress={() => {
-          navigation.navigate('DetailPost')
-        }}
-      />
-      <Button
-        title='글쓰기'
-        onPress={() => {
-          navigation.navigate('WritePost')
-        }}
-      />
-      <Button
-        title='테스트2'
-        onPress={() => {
-          navigation.navigate('Test2')
-        }}
-      />
-      <Text>현재 갯수는 : {count}개</Text>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.content}>
+        <View>
+          <Text>ChartPostScreen</Text>
+          <Text>잘되나</Text>
+        </View>
+        <Button
+          title='프로필'
+          onPress={() => {
+            // navigation.navigate('Home')
+            navigation.navigate('ProfileMain')
+          }}
+        />
+        <Button
+          title='포스트 자세히 보기'
+          onPress={() => {
+            navigation.navigate('DetailPost')
+          }}
+        />
+        <Button
+          title='글쓰기'
+          onPress={() => {
+            navigation.navigate('WritePost')
+          }}
+        />
+        <Text>현재 갯수는 : {count}개</Text>
+      </ScrollView>
+      <BottomComponent/>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  content: {
+    flex: 1,
+  },
+});
 
 export default ChartPostScreen;

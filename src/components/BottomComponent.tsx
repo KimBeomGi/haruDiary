@@ -21,41 +21,33 @@ function BottomComponent(): React.JSX.Element {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
+        style={styles.eachposition}
         onPress={() => {navigation.navigate('Home')}}
       >
         <Icon name="home" color="#a0a0a0" size={24} />
+        <Text>홈</Text>
       </TouchableOpacity>
       <TouchableOpacity
+        style={styles.eachposition}
         onPress={() => {navigation.navigate('ChartPost')}}
       >
         <Icon name="show-chart" color="#a0a0a0" size={24} />
+        <Text>차트</Text>
       </TouchableOpacity>
       <TouchableOpacity
+        style={styles.eachposition}
         onPress={() => {navigation.navigate('SearchPost')}}
       >
         <Icon name="search" color="#a0a0a0" size={24} />
+        <Text>검색</Text>
       </TouchableOpacity>
       <TouchableOpacity
+        style={styles.eachposition}
         onPress={() => {navigation.navigate('ProfileMain')}}
       >
         <Icon name="person" color="#a0a0a0" size={24} />
+        <Text>프로필</Text>
       </TouchableOpacity>
-      {/* <Button
-        title='홈'
-        onPress={() => {navigation.navigate('Home')}}
-      />
-      <Button
-        title='차트'
-        onPress={() => {navigation.navigate('ChartPost')}}
-      />
-      <Button
-        title='검색'
-        onPress={() => {navigation.navigate('SearchPost')}}
-      />
-      <Button
-        title='프로필'
-        onPress={() => {navigation.navigate('ProfileMain')}}
-      /> */}
     </SafeAreaView>
   );
 }
@@ -69,6 +61,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#000000',
   },
+  eachposition: {
+    alignItems: 'center',
+  }
 });
 
 export default BottomComponent;
