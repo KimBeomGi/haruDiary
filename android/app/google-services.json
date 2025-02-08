@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "195657863550",
+    "project_id": "harudiary-6dd81",
+    "storage_bucket": "harudiary-6dd81.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195657863550:android:f3218a22dbede0bf80632f",
+        "android_client_info": {
+          "package_name": "com.harudiary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfAaZ96DBgodfsVCFtdZuN_gxa3xGSFHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
