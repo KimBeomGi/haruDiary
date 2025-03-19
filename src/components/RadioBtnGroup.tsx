@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, Button, StyleSheet, TouchableOpacity, Animated, Pressable } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -19,6 +19,7 @@ type RadioBtnGroupParam = {
     selected: number;
   }[];
   onSelect: (textName: string, selectedIndex: number) => void; // 콜백 함수 prop 추가
+  selected: number;
 }
 
 
@@ -26,7 +27,7 @@ function RadioBtnGroup(param : RadioBtnGroupParam): React.JSX.Element {
   const navigation = useNavigation<RadioBtnGroupNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(param.selected);
 
   return (
     <SafeAreaView>

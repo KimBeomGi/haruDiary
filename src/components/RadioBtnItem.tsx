@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, Text, View, Button, StyleSheet, TouchableOpacity, Animated, Pressable } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
@@ -23,7 +23,7 @@ function RadioBtnItem(param:RadioBtnItemParam): React.JSX.Element {
   const navigation = useNavigation<RadioBtnItemNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
-
+  
   return (
     <SafeAreaView>
       <TouchableOpacity
@@ -35,12 +35,11 @@ function RadioBtnItem(param:RadioBtnItemParam): React.JSX.Element {
           <View style={[styles.modeSelectBtn1, param.selected && styles.selectedCircle]}></View>
           <Text style={styles.modeSelectBtn2}>{param.textName}</Text>
         </View>
-        {param.iconName ? 
+        {param.iconName && (
           <Text style={styles.modeSelectBtn3}>
             <MaterialIcons name={param.iconName} size={16} />
           </Text>
-          : <></>
-        }
+        )}
       </TouchableOpacity>
     </SafeAreaView>
     

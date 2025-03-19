@@ -52,14 +52,14 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
   // }, []);
 
   useFocusEffect(
-      React.useCallback(() => {
-        dispatch(selectTab(0))
-        return () => {
-          // Do something when the screen is unfocused
-          // Useful for cleanup functions
-        };
-      }, [])
-    );
+    React.useCallback(() => {
+      dispatch(selectTab(0))
+      return () => {
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      };
+    }, [])  
+  );
     // useEffect(() => {
     //   dispatch(selectTab(3))
     // }, [])
@@ -73,19 +73,7 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
         </View>
       </ScrollView>
       <WriteBtnComponent />      
-      {/* <BottomComponent/> */}
     </SafeAreaView>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//   },
-//   content: {
-//     flex: 1,
-//     marginHorizontal : 16,
-//   },
-// });
-
 export default HomeScreen;
