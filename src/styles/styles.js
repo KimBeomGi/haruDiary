@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal : 16,
   },
+  button1: {
+    paddingVertical : 8
+  },
 });
 
 export default styles;

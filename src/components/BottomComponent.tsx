@@ -20,7 +20,6 @@ function BottomComponent(): React.JSX.Element {
   // const count = useSelector((state: RootState) => state.counter.value)
   const selectTabIdx = useSelector((state: RootState) => state.bottomTab.value)
   const dispatch = useDispatch()
-  const index = useNavigationState((state) => state.index) // stack index임
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,14 +28,14 @@ function BottomComponent(): React.JSX.Element {
         activeOpacity={0.8}
         onPress={() => {
           // navigation.navigate('Home')
-          // navigation.popToTop()이 안먹혀서 reset 사용
-          if(index > 0){
+          // navigation.popToTop()//이 안먹혀서 reset 사용
+          if(selectTabIdx !== 0){
             navigation.reset({
               index: 0,
-              routes: [{ name: 'Home' }], // 첫 번째 화면 이름
+              routes: [{ name: 'Home' }],
             });
           }
-        }}
+        }} 
       >
         <Icon name="home" color= {selectTabIdx === 0 ? "#c041ff" : "#a0a0a0"} size={24} />
         <Text>홈</Text>

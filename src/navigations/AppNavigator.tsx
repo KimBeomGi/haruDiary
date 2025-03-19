@@ -43,6 +43,7 @@ import type {
 import SearchPostScreen from '../screens/reads/SearchPostScreen';
 import ChartPostScreen from '../screens/reads/ChartPostScreen';
 import BottomComponent from '../components/BottomComponent';
+import LDModeScreen from '../screens/setting/LDModeScreen';
 
 export type RootStackParamList = {
   // Home: NavigatorScreenParams<HomeTabParamList>;
@@ -55,6 +56,7 @@ export type RootStackParamList = {
   ChartPost: undefined;
   AiHaru : undefined;
   Setting : undefined;
+  LDMode : undefined;
 };
 
 // export type HomeTabParamList = {
@@ -94,6 +96,7 @@ function AppNavigator(): React.JSX.Element {
         <Stack.Screen name="ChartPost" component={ChartPostScreen} />
         <Stack.Screen name="AiHaru" component={AiHaruScreen} />
         <Stack.Screen name="Setting" component={SettingScreen} />
+        <Stack.Screen name="LDMode" component={LDModeScreen} />
         
       </Stack.Navigator>
       <BottomComponent />

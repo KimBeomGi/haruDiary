@@ -12,13 +12,15 @@ import styles from '../../styles/styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
+import RadioBtnItem from '../../components/RadioBtnItem';
+import RadioBtnGroup from '../../components/RadioBtnGroup';
 
 
-type SettingScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Setting'>;
+type LDModeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'LDMode'>;
 
 
-function SettingScreen(): React.JSX.Element {
-  const navigation = useNavigation<SettingScreenNavigationProp>()
+function LDModeScreen(): React.JSX.Element {
+  const navigation = useNavigation<LDModeScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
 
@@ -32,44 +34,18 @@ function SettingScreen(): React.JSX.Element {
           
         }}
       >
-        <Text>
-          <MaterialIcons name = "lock-outline" color="#a0a0a0" size={16} />
-          잠금 설정
-        </Text>
+        
       </TouchableOpacity>
-      <TouchableOpacity
-        style = {styles.button1}
-        onPress={() => {
-          navigation.navigate("LDMode")
-        }}
-      >
-        <Text>
-          <Ionicons name = "moon-outline" color="#a0a0a0" size={16} />
-          화면 모드
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style = {styles.button1}
-        onPress={() => {
-          
-        }}
-      >
-        <Text>
-          <MaterialIcons name = "font-download" color="#a0a0a0" size={16} />
-          폰트
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style = {styles.button1}
-        onPress={() => {
-          
-        }}
-      >
-        <Text>
-          <Octicons name = "bell" color="#a0a0a0" size={16} />
-          알림
-        </Text>
-      </TouchableOpacity>
+
+      <RadioBtnGroup 
+        names={[
+          {textName :'시스템 모드', iconName : 'wb-twilight'},
+          {textName :'라이트 모드', iconName : 'light-mode'},
+          {textName :'다크 모드', iconName : 'dark-mode'},
+        ]}/>
+      {/* <RadioBtnItem textName={'시스템 모드'} iconName={'wb-twilight'}/>
+      <RadioBtnItem textName={'라이트 모드'} iconName={'light-mode'}/>
+      <RadioBtnItem textName={'다크 모드'} iconName={'dark-mode'}/> */}
     </SafeAreaView>
     
   );
@@ -84,4 +60,4 @@ function SettingScreen(): React.JSX.Element {
 //   },
 // });
 
-export default SettingScreen;
+export default LDModeScreen;
