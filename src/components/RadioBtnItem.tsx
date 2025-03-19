@@ -13,7 +13,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 type RadioBtnItemNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 type RadioBtnItemParam = {
   textName : string;
-  iconName : string;
+  iconName : string | null;
   selected : boolean;
   onPress : () => void;
 }
@@ -35,9 +35,12 @@ function RadioBtnItem(param:RadioBtnItemParam): React.JSX.Element {
           <View style={[styles.modeSelectBtn1, param.selected && styles.selectedCircle]}></View>
           <Text style={styles.modeSelectBtn2}>{param.textName}</Text>
         </View>
-        <Text style={styles.modeSelectBtn3}>
-          <MaterialIcons name={param.iconName} size={16} />
-        </Text>
+        {param.iconName ? 
+          <Text style={styles.modeSelectBtn3}>
+            <MaterialIcons name={param.iconName} size={16} />
+          </Text>
+          : <></>
+        }
       </TouchableOpacity>
     </SafeAreaView>
     

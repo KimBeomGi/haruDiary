@@ -23,29 +23,30 @@ function LDModeScreen(): React.JSX.Element {
   const navigation = useNavigation<LDModeScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  const [selectedMode, setSelectedMode] = useState('라이트 모드'); // 선택된 모드 상태 관리
+
+  const handleSelect = (textName: string, selectedIndex: number) => {
+    setSelectedMode(textName);
+    console.log(`Selected mode: ${textName}, index: ${selectedIndex}`);
+    // 선택된 모드에 따라 필요한 작업 수행
+  };
 
   return (
     <SafeAreaView
       style = {{paddingHorizontal: 16}}
     >
-      <TouchableOpacity
-        style = {styles.button1}
-        onPress={() => {
-          
-        }}
-      >
-        
-      </TouchableOpacity>
-
       <RadioBtnGroup 
         names={[
-          {textName :'시스템 모드', iconName : 'wb-twilight'},
-          {textName :'라이트 모드', iconName : 'light-mode'},
-          {textName :'다크 모드', iconName : 'dark-mode'},
-        ]}/>
+          {textName :'라이트 모드', iconName : 'light-mode', selected : 0},
+          {textName :'다크 모드', iconName : 'dark-mode', selected : 1},
+          {textName :'시스템 모드', iconName : 'wb-twilight', selected : 2},
+        ]}
+        onSelect={handleSelect} // 콜백 함수 전달
+      />
       {/* <RadioBtnItem textName={'시스템 모드'} iconName={'wb-twilight'}/>
       <RadioBtnItem textName={'라이트 모드'} iconName={'light-mode'}/>
       <RadioBtnItem textName={'다크 모드'} iconName={'dark-mode'}/> */}
+      <Text>Selected mode: {selectedMode}</Text>
     </SafeAreaView>
     
   );

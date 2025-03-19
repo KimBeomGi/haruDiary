@@ -15,8 +15,10 @@ type RadioBtnGroupNavigationProp = NativeStackNavigationProp<RootStackParamList>
 type RadioBtnGroupParam = {
   names : {
     textName: string;
-    iconName: string;
-  }[]
+    iconName: string | null;
+    selected: number;
+  }[];
+  onSelect: (textName: string, selectedIndex: number) => void; // 콜백 함수 prop 추가
 }
 
 
@@ -24,9 +26,7 @@ function RadioBtnGroup(param : RadioBtnGroupParam): React.JSX.Element {
   const navigation = useNavigation<RadioBtnGroupNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
-  const [selected, setSelected] = useState(-1);
-
-
+  const [selected, setSelected] = useState(0);
 
   return (
     <SafeAreaView>
@@ -40,8 +40,10 @@ function RadioBtnGroup(param : RadioBtnGroupParam): React.JSX.Element {
           textName={item.textName} 
           iconName={item.iconName}
           selected={selected === index}
-          onPress={() => setSelected(index)}
-
+          onPress={() => {
+            setSelected(index);
+            param.onSelect(item.textName, index); // 콜백 함수 호출
+          }}
         />
       ))}
       
