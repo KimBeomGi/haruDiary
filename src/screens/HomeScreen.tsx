@@ -12,6 +12,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, incrementByAmount } from '../../store/counter/counterSlice';
 import BottomComponent from '../components/BottomComponent';
 
+import styles from '../styles/styles';
+
 // NavigationProp 타입을 설정합니다.
 // type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 type HomeScreenNavigationProp = {
@@ -59,13 +61,14 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  content: {
-    flex: 1,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+//   content: {
+//     flex: 1,
+//     marginHorizontal : 16,
+//   },
+// });
 
 export default HomeScreen;
