@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, Button, StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView, Text, View, Button, ScrollView, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
 
@@ -8,11 +8,11 @@ import type { RootState } from '../../../store/store';
 import { useSelector, useDispatch } from 'react-redux'
 import BottomComponent from '../../components/BottomComponent';
 
-type ProfileMainScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'ProfileMain'>;
+type AiHaruScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'AiHaru'>;
 
 
-function ProfileMainScreen(): React.JSX.Element {
-  const navigation = useNavigation<ProfileMainScreenNavigationProp>()
+function AiHaruScreen(): React.JSX.Element {
+  const navigation = useNavigation<AiHaruScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
 
@@ -20,7 +20,7 @@ function ProfileMainScreen(): React.JSX.Element {
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.content}>
         <View>
-          <Text>ProfileMainScreen</Text>
+          <Text>AiHaruScreen</Text>
           <Text>잘되나</Text>
         </View>
         <Button
@@ -58,4 +58,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileMainScreen;
+
+export default AiHaruScreen;

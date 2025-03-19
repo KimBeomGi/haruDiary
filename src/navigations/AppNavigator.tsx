@@ -33,6 +33,7 @@ import HomeScreen from '../screens/HomeScreen';
 import ProfileMainScreen from '../screens/profile/ProfileMainScreen';
 import DetailPostScreen from '../screens/reads/DetailPostScreen';
 import WritePostScreen from '../screens/wirtes/WritePostScreen';
+import AiHaruScreen from '../screens/ai/AiHaruScreen';
 
 import type {
   CompositeScreenProps,
@@ -51,6 +52,7 @@ export type RootStackParamList = {
   WritePost: undefined;
   SearchPost: undefined;
   ChartPost: undefined;
+  AiHaru : undefined;
 };
 
 // export type HomeTabParamList = {
@@ -80,6 +82,7 @@ function AppNavigator(): React.JSX.Element {
         <Stack.Screen name="WritePost" component={WritePostScreen} />
         <Stack.Screen name="SearchPost" component={SearchPostScreen} />
         <Stack.Screen name="ChartPost" component={ChartPostScreen} />
+        <Stack.Screen name="AiHaru" component={AiHaruScreen} />
       </Stack.Navigator>
       <BottomComponent />
     </NavigationContainer>

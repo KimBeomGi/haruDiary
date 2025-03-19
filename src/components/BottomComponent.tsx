@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../store/store'; 
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+// import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 type BottomComponentNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -34,19 +35,26 @@ function BottomComponent(): React.JSX.Element {
         <Icon name="home" color="#a0a0a0" size={24} />
         <Text>홈</Text>
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.eachposition}
         onPress={() => {navigation.navigate('ChartPost')}}
       >
         <Icon name="show-chart" color="#a0a0a0" size={24} />
         <Text>차트</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity
         style={styles.eachposition}
         onPress={() => {navigation.navigate('SearchPost')}}
       >
         <Icon name="search" color="#a0a0a0" size={24} />
         <Text>검색</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.eachposition}
+        onPress={() => {navigation.navigate('AiHaru')}}
+      >
+        <Icon name="chat" color="#a0a0a0" size={24} />
+        <Text>하루</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.eachposition}
