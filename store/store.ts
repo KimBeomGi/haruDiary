@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './counter/counterSlice'
+import bottomTabReducer from './bottom/bottomTabSlice'
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    bottomTab: bottomTabReducer,
   },
 })
 

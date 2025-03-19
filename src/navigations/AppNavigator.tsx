@@ -34,6 +34,7 @@ import ProfileMainScreen from '../screens/profile/ProfileMainScreen';
 import DetailPostScreen from '../screens/reads/DetailPostScreen';
 import WritePostScreen from '../screens/wirtes/WritePostScreen';
 import AiHaruScreen from '../screens/ai/AiHaruScreen';
+import SettingScreen from '../screens/setting/SettingScreen';
 
 import type {
   CompositeScreenProps,
@@ -53,6 +54,7 @@ export type RootStackParamList = {
   SearchPost: undefined;
   ChartPost: undefined;
   AiHaru : undefined;
+  Setting : undefined;
 };
 
 // export type HomeTabParamList = {
@@ -76,13 +78,23 @@ function AppNavigator(): React.JSX.Element {
           animation : "slide_from_right"
         })}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} 
+          options={{
+            animation : "slide_from_left"
+          }}
+        />
         <Stack.Screen name="ProfileMain" component={ProfileMainScreen} />
         <Stack.Screen name="DetailPost" component={DetailPostScreen} />
-        <Stack.Screen name="WritePost" component={WritePostScreen} />
+        <Stack.Screen name="WritePost" component={WritePostScreen}
+          options={{
+            animation : "none"
+          }}
+        />
         <Stack.Screen name="SearchPost" component={SearchPostScreen} />
         <Stack.Screen name="ChartPost" component={ChartPostScreen} />
         <Stack.Screen name="AiHaru" component={AiHaruScreen} />
+        <Stack.Screen name="Setting" component={SettingScreen} />
+        
       </Stack.Navigator>
       <BottomComponent />
     </NavigationContainer>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button, SafeAreaView, Text, View, BackHandler, Alert, StyleSheet, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation, useNavigationState } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
 import { RouteProp } from '@react-navigation/native';
@@ -11,8 +11,10 @@ import type { RootState } from '../../store/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, incrementByAmount } from '../../store/counter/counterSlice';
 import BottomComponent from '../components/BottomComponent';
+import WriteBtnComponent from '../components/WriteBtnComponent';
 
 import styles from '../styles/styles';
+import { selectTab } from '../../store/bottom/bottomTabSlice';
 
 // NavigationProp 타입을 설정합니다.
 // type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -25,19 +27,21 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
   // const navigation = useNavigation<HomeScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  // const index = useNavigationState((state) => state.index) // stack index임
   
+  // 작동 불량
   // useEffect(() => {
   //   const backAction = () => {
-  //     Alert.alert("잠깐만요!", "정말 끝낼거에요?", [
-  //       {
-  //         text: 'Cancel',
-  //         onPress: () => null,
-  //         style: 'cancel',
-  //       },
-  //       {text: 'YES', onPress: () => BackHandler.exitApp()},
-  //     ]);
-  //     return true;
-  //   };
+  //       Alert.alert("", "앱을 종료할까요?", [
+  //         {
+  //           text: '아니오',
+  //           onPress: () => null,
+  //           style: 'cancel',
+  //         },
+  //         {text: '네', onPress: () => BackHandler.exitApp()},
+  //       ]);
+  //       return true;
+  //     };
 
   //   const backHandler = BackHandler.addEventListener(
   //     'hardwareBackPress',
@@ -47,6 +51,19 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
   //   return () => backHandler.remove();
   // }, []);
 
+  useFocusEffect(
+      React.useCallback(() => {
+        dispatch(selectTab(0))
+        return () => {
+          // Do something when the screen is unfocused
+          // Useful for cleanup functions
+        };
+      }, [])
+    );
+    // useEffect(() => {
+    //   dispatch(selectTab(3))
+    // }, [])
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.content}>
@@ -55,9 +72,9 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
           <Text>잘되나</Text>
         </View>
       </ScrollView>
+      <WriteBtnComponent />      
       {/* <BottomComponent/> */}
     </SafeAreaView>
-    
   );
 }
 

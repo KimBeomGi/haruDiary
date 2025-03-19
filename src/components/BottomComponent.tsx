@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useNavigationState } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../store/store'; 
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { selectTab } from '../../store/bottom/bottomTabSlice';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
@@ -16,23 +17,28 @@ type BottomComponentNavigationProp = NativeStackNavigationProp<RootStackParamLis
 
 function BottomComponent(): React.JSX.Element {
   const navigation = useNavigation<BottomComponentNavigationProp>()
-  const count = useSelector((state: RootState) => state.counter.value)
+  // const count = useSelector((state: RootState) => state.counter.value)
+  const selectTabIdx = useSelector((state: RootState) => state.bottomTab.value)
   const dispatch = useDispatch()
+  const index = useNavigationState((state) => state.index) // stack index임
 
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
         style={styles.eachposition}
+        activeOpacity={0.8}
         onPress={() => {
           // navigation.navigate('Home')
           // navigation.popToTop()이 안먹혀서 reset 사용
-          navigation.reset({
-            index: 0,
-            routes: [{ name: 'Home' }], // 첫 번째 화면 이름
-          });
+          if(index > 0){
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'Home' }], // 첫 번째 화면 이름
+            });
+          }
         }}
       >
-        <Icon name="home" color="#a0a0a0" size={24} />
+        <Icon name="home" color= {selectTabIdx === 0 ? "#c041ff" : "#a0a0a0"} size={24} />
         <Text>홈</Text>
       </TouchableOpacity>
       {/* <TouchableOpacity
@@ -44,23 +50,32 @@ function BottomComponent(): React.JSX.Element {
       </TouchableOpacity> */}
       <TouchableOpacity
         style={styles.eachposition}
-        onPress={() => {navigation.navigate('SearchPost')}}
+        activeOpacity={0.8}
+        onPress={() => {
+          navigation.navigate('SearchPost')
+        }}
       >
-        <Icon name="search" color="#a0a0a0" size={24} />
-        <Text>검색</Text>
+        <Icon name="history" color= {selectTabIdx === 1 ? "#c041ff" : "#a0a0a0"} size={24} />
+        <Text>돌아보기</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.eachposition}
-        onPress={() => {navigation.navigate('AiHaru')}}
+        activeOpacity={0.8}
+        onPress={() => {
+          navigation.navigate('AiHaru')
+        }}
       >
-        <Icon name="chat" color="#a0a0a0" size={24} />
+        <Icon name="chat" color= {selectTabIdx === 2 ? "#c041ff" : "#a0a0a0"} size={24} />
         <Text>하루</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.eachposition}
-        onPress={() => {navigation.navigate('ProfileMain')}}
+        activeOpacity={0.8}
+        onPress={() => {
+          navigation.navigate('ProfileMain')
+        }}
       >
-        <Icon name="person" color="#a0a0a0" size={24} />
+        <Icon name="person" color= {selectTabIdx === 3 ? "#c041ff" : "#a0a0a0"} size={24} />
         <Text>프로필</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -71,7 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    padding: 8,
+    paddingVertical : 8,
     backgroundColor: '#eeeeee',
     borderTopWidth: 1,
     borderTopColor: '#000000',

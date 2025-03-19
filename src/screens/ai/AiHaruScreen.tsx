@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, Text, View, Button, ScrollView, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
@@ -7,6 +7,7 @@ import { RootStackParamList } from '../../navigations/AppNavigator'; // RootStac
 import type { RootState } from '../../../store/store'; 
 import { useSelector, useDispatch } from 'react-redux'
 import BottomComponent from '../../components/BottomComponent';
+import { selectTab } from '../../../store/bottom/bottomTabSlice';
 
 type AiHaruScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'AiHaru'>;
 
@@ -15,6 +16,19 @@ function AiHaruScreen(): React.JSX.Element {
   const navigation = useNavigation<AiHaruScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+
+  useFocusEffect(
+      React.useCallback(() => {
+        dispatch(selectTab(2))
+        return () => {
+          // Do something when the screen is unfocused
+          // Useful for cleanup functions
+        };
+      }, [])
+    );
+    // useEffect(() => {
+    //   dispatch(selectTab(3))
+    // }, [])
 
   return (
     <SafeAreaView style={styles.container}>
