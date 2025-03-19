@@ -39,6 +39,7 @@ import type {
   NavigatorScreenParams,
 } from '@react-navigation/native';
 
+
 function App(): React.JSX.Element {
   return (
     <Provider store={store}>

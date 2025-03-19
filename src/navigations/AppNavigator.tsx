@@ -40,6 +40,7 @@ import type {
 } from '@react-navigation/native';
 import SearchPostScreen from '../screens/reads/SearchPostScreen';
 import ChartPostScreen from '../screens/reads/ChartPostScreen';
+import BottomComponent from '../components/BottomComponent';
 
 export type RootStackParamList = {
   // Home: NavigatorScreenParams<HomeTabParamList>;
@@ -68,6 +69,9 @@ function AppNavigator(): React.JSX.Element {
         screenOptions={() => ({
           header: () => <HeaderComponent />, // 여기서 navigation 전달
           // headerShown: true
+          // animation : "fade"
+          // animation : "none"
+          animation : "slide_from_right"
         })}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
@@ -77,6 +81,7 @@ function AppNavigator(): React.JSX.Element {
         <Stack.Screen name="SearchPost" component={SearchPostScreen} />
         <Stack.Screen name="ChartPost" component={ChartPostScreen} />
       </Stack.Navigator>
+      <BottomComponent />
     </NavigationContainer>
   );
 }

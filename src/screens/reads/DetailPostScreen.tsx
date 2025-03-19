@@ -44,7 +44,7 @@ function DetailPostScreen(): React.JSX.Element {
         />
         <Text>현재 갯수는 : {count}개</Text>
       </ScrollView>
-      <BottomComponent/>
+      {/* <BottomComponent/> */}
     </SafeAreaView>
   );
 }

@@ -51,7 +51,7 @@ function DummyScreen(): React.JSX.Element {
           onPress={() => {return(dispatch(incrementByAmount(-3)))}}
         />
       </ScrollView>
-      <BottomComponent/>
+      {/* <BottomComponent/> */}
     </SafeAreaView>
   );
 }

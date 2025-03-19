@@ -22,7 +22,14 @@ function BottomComponent(): React.JSX.Element {
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
         style={styles.eachposition}
-        onPress={() => {navigation.navigate('Home')}}
+        onPress={() => {
+          // navigation.navigate('Home')
+          // navigation.popToTop()이 안먹혀서 reset 사용
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Home' }], // 첫 번째 화면 이름
+          });
+        }}
       >
         <Icon name="home" color="#a0a0a0" size={24} />
         <Text>홈</Text>

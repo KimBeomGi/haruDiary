@@ -7,7 +7,7 @@ import { RootStackParamList } from '../../navigations/AppNavigator'; // RootStac
 import type { RootState } from '../../../store/store'; 
 import { useSelector, useDispatch } from 'react-redux'
 
-type WritePostScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Test1'>;
+type WritePostScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'WritePost'>;
 
 
 function WritePostScreen(): React.JSX.Element {

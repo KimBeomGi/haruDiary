@@ -53,7 +53,7 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
           <Text>잘되나</Text>
         </View>
       </ScrollView>
-      <BottomComponent/>
+      {/* <BottomComponent/> */}
     </SafeAreaView>
     
   );
