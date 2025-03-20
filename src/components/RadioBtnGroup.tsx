@@ -22,7 +22,6 @@ type RadioBtnGroupParam = {
   selected: number;
 }
 
-
 function RadioBtnGroup(param : RadioBtnGroupParam): React.JSX.Element {
   const navigation = useNavigation<RadioBtnGroupNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
@@ -34,7 +33,6 @@ function RadioBtnGroup(param : RadioBtnGroupParam): React.JSX.Element {
       <TouchableOpacity
         activeOpacity={0.8}
       >
-
       {param.names.map((item, index) => (
         <RadioBtnItem 
           key={index} 

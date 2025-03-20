@@ -7,11 +7,12 @@ import { RootStackParamList } from '../../navigations/AppNavigator'; // RootStac
 import type { RootState } from '../../../store/store'; 
 import { useSelector, useDispatch } from 'react-redux'
 
-import styles from '../../styles/styles';
+import {getStyles} from '../../styles/styles';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
+import { incrementByAmount } from '../../../store/counter/counterSlice';
 
 
 type SettingScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Setting'>;
@@ -21,19 +22,25 @@ function SettingScreen(): React.JSX.Element {
   const navigation = useNavigation<SettingScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  // store에 있는 mode와 isDarkMode를 여기로 가져오니 바로바로 잘 읽어서 온다. 사용하지도 않는데 왜지???
+  const mode = useSelector((state: RootState) => state.theme.mode)
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+  const styles = getStyles()
 
   return (
     <SafeAreaView
-      style = {{paddingHorizontal: 16}}
+      style = {[styles.container, styles.pdhr2]}
     >
       <TouchableOpacity
-        style = {styles.button1}
+        style = {[styles.button1]}
         onPress={() => {
           
         }}
       >
-        <Text>
-          <MaterialIcons name = "lock-outline" color="#a0a0a0" size={16} />
+        <Text
+          style = {[styles.fs1]}
+        >
+          <MaterialIcons name = "lock-outline" color="#a0a0a0" size={styles.fs1.fontSize} />
           잠금 설정
         </Text>
       </TouchableOpacity>
@@ -43,8 +50,10 @@ function SettingScreen(): React.JSX.Element {
           navigation.navigate("LDMode")
         }}
       >
-        <Text>
-          <Ionicons name = "moon-outline" color="#a0a0a0" size={16} />
+        <Text
+          style = {[styles.fs1]}
+        >
+          <Ionicons name = "moon-outline" color="#a0a0a0" size={styles.fs1.fontSize} />
           화면 모드
         </Text>
       </TouchableOpacity>
@@ -54,8 +63,10 @@ function SettingScreen(): React.JSX.Element {
           
         }}
       >
-        <Text>
-          <MaterialIcons name = "font-download" color="#a0a0a0" size={16} />
+        <Text
+          style = {[styles.fs1]}
+        >
+          <MaterialIcons name = "font-download" color="#a0a0a0" size={styles.fs1.fontSize} />
           폰트
         </Text>
       </TouchableOpacity>
@@ -65,11 +76,28 @@ function SettingScreen(): React.JSX.Element {
           
         }}
       >
-        <Text>
-          <Octicons name = "bell" color="#a0a0a0" size={16} />
+        <Text
+          style = {[styles.fs1]}
+        >
+          <Octicons name = "bell" color="#a0a0a0" size={styles.fs1.fontSize} />
           알림
         </Text>
       </TouchableOpacity>
+      <Button
+        title='+3하기'
+        onPress={() => {
+          dispatch(incrementByAmount(3))
+        }}
+      />
+      {/* <Text
+          style = {[styles.fs1]}
+        >{count}</Text>
+      <Text
+          style = {[styles.fs1]}
+        >{mode}</Text>
+      <Text
+          style = {[styles.fs1]}
+        >{isDarkMode ? 'true': 'false'}</Text> */}
     </SafeAreaView>
     
   );

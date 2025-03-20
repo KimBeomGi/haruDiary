@@ -13,7 +13,7 @@ import { decrement, increment, incrementByAmount } from '../../store/counter/cou
 import BottomComponent from '../components/BottomComponent';
 import WriteBtnComponent from '../components/WriteBtnComponent';
 
-import styles from '../styles/styles';
+import {getStyles} from '../styles/styles';
 import { selectTab } from '../../store/bottom/bottomTabSlice';
 
 // NavigationProp 타입을 설정합니다.
@@ -27,6 +27,9 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
   // const navigation = useNavigation<HomeScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  const styles = getStyles()
+  const mode = useSelector((state: RootState) => state.theme.mode)
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
   // const index = useNavigationState((state) => state.index) // stack index임
   
   // 작동 불량

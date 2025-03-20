@@ -10,6 +10,7 @@ import BottomComponent from '../../components/BottomComponent';
 import { selectTab } from '../../../store/bottom/bottomTabSlice';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { getStyles } from '../../styles/styles';
 
 type ProfileMainScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'ProfileMain'>;
 
@@ -18,6 +19,7 @@ function ProfileMainScreen(): React.JSX.Element {
   const navigation = useNavigation<ProfileMainScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  const styles = getStyles()
 
   useFocusEffect(
     React.useCallback(() => {
@@ -34,7 +36,7 @@ function ProfileMainScreen(): React.JSX.Element {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.content}>
+      <ScrollView>
         <View>
           <Text>ProfileMainScreen</Text>
         </View>
@@ -56,7 +58,7 @@ function ProfileMainScreen(): React.JSX.Element {
             설정하기
           </Text>
         </TouchableOpacity>
-        
+        <Text>{count}</Text>
       </ScrollView>
       {/* <BottomComponent/> */}
     </SafeAreaView>

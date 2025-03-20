@@ -9,6 +9,7 @@ import type { RootState } from '../../store/store';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
+import { getStyles } from '../styles/styles';
 
 type RadioBtnItemNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 type RadioBtnItemParam = {
@@ -23,58 +24,58 @@ function RadioBtnItem(param:RadioBtnItemParam): React.JSX.Element {
   const navigation = useNavigation<RadioBtnItemNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  const styles = getStyles()
   
   return (
     <SafeAreaView>
       <TouchableOpacity
-        style={styles.modeBtn}
+        style={[styles.radioBtnItem, styles.pdvr2, styles.pdhr1]}
         activeOpacity={0.8}
         onPress={param.onPress}
       >
         <View style={{flexDirection : "row", alignItems : "center"}}>
-          <View style={[styles.modeSelectBtn1, param.selected && styles.selectedCircle]}></View>
-          <Text style={styles.modeSelectBtn2}>{param.textName}</Text>
+          <View style={[styles.radioSelectBtn, styles.pdhr1, param.selected && styles.selectedCircle]}></View>
+          <Text style={[styles.fs1, styles.pdhr1]}>{param.textName}</Text>
         </View>
         {param.iconName && (
-          <Text style={styles.modeSelectBtn3}>
-            <MaterialIcons name={param.iconName} size={16} />
+          <Text style={styles.pdhr1}>
+            <MaterialIcons name={param.iconName} size={styles.fs1.fontSize} color={styles.fs1.color}/>
           </Text>
         )}
       </TouchableOpacity>
     </SafeAreaView>
-    
   );
 }
 
 const styles = StyleSheet.create({
-  modeBtn: {
-    flexDirection : "row",
-    // justifyContent : 'center',
-    justifyContent: "space-between",
-    alignItems : 'center',
-    padding : 8,
-  },
-  modeSelectBtn1 : {
-    height: 16,
-    width: 16,
-    borderRadius : 8,
-    borderColor : "#000000",
-    borderStyle : "solid",
-    borderWidth : 1,
-    marginHorizontal : 8,
-  },
-  selectedCircle: {
-    backgroundColor: '#c041ff', // 선택된 원의 배경색
-    borderColor: '#c041ff',
-  },
+  // modeBtn: {
+  //   flexDirection : "row",
+  //   // justifyContent : 'center',
+  //   justifyContent: "space-between",
+  //   alignItems : 'center',
+  //   padding : 8,
+  // },
+  // modeSelectBtn1 : {
+  //   height: 16,
+  //   width: 16,
+  //   borderRadius : 8,
+  //   borderColor : "#000000",
+  //   borderStyle : "solid",
+  //   borderWidth : 1,
+  //   marginHorizontal : 8,
+  // },
+  // selectedCircle: {
+  //   backgroundColor: '#c041ff', // 선택된 원의 배경색
+  //   borderColor: '#c041ff',
+  // },
 
-  modeSelectBtn2 : {
-    fontSize : 16,
-    paddingHorizontal : 8
-  },
-  modeSelectBtn3 : {
-    paddingHorizontal : 8
-  }
+  // modeSelectBtn2 : {
+  //   fontSize : 16,
+  //   paddingHorizontal : 8
+  // },
+  // modeSelectBtn3 : {
+  //   paddingHorizontal : 8
+  // }
 });
 
 export default RadioBtnItem;
