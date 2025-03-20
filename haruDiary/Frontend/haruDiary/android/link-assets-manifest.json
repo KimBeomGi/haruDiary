@@ -1,0 +1,49 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/ANDONG 264 TTF.ttf",
+      "sha1": "0bcc92bb5b75ca626db126e20cc1fc99928bdd7d"
+    },
+    {
+      "path": "src/assets/fonts/GodoB.ttf",
+      "sha1": "2fb9e98572d5a5e3ea5ff7cde1213a2cca9cd61d"
+    },
+    {
+      "path": "src/assets/fonts/GodoM.ttf",
+      "sha1": "0f7da63c5b0a52e770203b83e3b1027ae200cd30"
+    },
+    {
+      "path": "src/assets/fonts/KimKongHae.ttf",
+      "sha1": "5f0cfffe3e41b20d31f026ff60190d9365775b73"
+    },
+    {
+      "path": "src/assets/fonts/NanumGoRyeoGeurGgor.ttf",
+      "sha1": "84e5c6d75bba7049134a60ed5d8bcff62d063a0f"
+    },
+    {
+      "path": "src/assets/fonts/NanumMyeongjo.ttf",
+      "sha1": "fff5fd3f51dfff394c88948a703ea746b3ef52fb"
+    },
+    {
+      "path": "src/assets/fonts/NanumMyeongjoBold.ttf",
+      "sha1": "4b5299e387fea8bab768cb78c228b304dfe35391"
+    },
+    {
+      "path": "src/assets/fonts/NanumMyeongjoExtraBold.ttf",
+      "sha1": "a891c3233a43468b46159004e253c095064b5de3"
+    },
+    {
+      "path": "src/assets/fonts/SunBatang-Bold.ttf",
+      "sha1": "ef0b93d6edc2d74f8c64f10137e27f6d02cc1475"
+    },
+    {
+      "path": "src/assets/fonts/SunBatang-Light.ttf",
+      "sha1": "51593fcfe87179b999a1265656f456fb2872b1f1"
+    },
+    {
+      "path": "src/assets/fonts/SunBatang-Medium.ttf",
+      "sha1": "50bd57a8d6ce2ad54c9c1545e26db997946d4191"
+    }
+  ]
+}

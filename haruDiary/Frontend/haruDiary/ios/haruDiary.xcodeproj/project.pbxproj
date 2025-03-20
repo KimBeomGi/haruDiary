@@ -11,6 +11,17 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D2FFFDBD7F1849ECBAD16AF6 /* ANDONG 264 TTF.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 349D8832B7674DB080FE00F2 /* ANDONG 264 TTF.ttf */; };
+		815FE4C6C5DF4C09B06D68E8 /* GodoB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A00936919DE4F019C4135E7 /* GodoB.ttf */; };
+		760ABFA922A8487FB03C0B3F /* GodoM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7CF31FC0E1B45A9AD136595 /* GodoM.ttf */; };
+		E208AC6EAA8C4DEA938FB03A /* KimKongHae.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4A6864EEFD043B3B701AA3C /* KimKongHae.ttf */; };
+		0BA14D65E39B4BDF826832DB /* NanumGoRyeoGeurGgor.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0DFAF9061F54B18938592DF /* NanumGoRyeoGeurGgor.ttf */; };
+		3F356054C77A4489859DBCEB /* NanumMyeongjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 398591D04E404E52B6FF7600 /* NanumMyeongjo.ttf */; };
+		3C63BB6DFC8A43EBA0494E0C /* NanumMyeongjoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68F3872698794F529EF0AB96 /* NanumMyeongjoBold.ttf */; };
+		94A46D77DC5E4BA3940933CD /* NanumMyeongjoExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E40132F592B945A6A8E88F6E /* NanumMyeongjoExtraBold.ttf */; };
+		FD55C448CE224CA6BD856841 /* SunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A336401FEDCC406386CE2C60 /* SunBatang-Bold.ttf */; };
+		7D09DDF355974B05BC71E0CC /* SunBatang-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2851BF65561641C6873CB44A /* SunBatang-Light.ttf */; };
+		3BB38226E09C4BD5AB924226 /* SunBatang-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1A2C864095243D680D378CE /* SunBatang-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +46,17 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = haruDiary/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = haruDiary/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		349D8832B7674DB080FE00F2 /* ANDONG 264 TTF.ttf */ = {isa = PBXFileReference; name = "ANDONG 264 TTF.ttf"; path = "../src/assets/fonts/ANDONG 264 TTF.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8A00936919DE4F019C4135E7 /* GodoB.ttf */ = {isa = PBXFileReference; name = "GodoB.ttf"; path = "../src/assets/fonts/GodoB.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F7CF31FC0E1B45A9AD136595 /* GodoM.ttf */ = {isa = PBXFileReference; name = "GodoM.ttf"; path = "../src/assets/fonts/GodoM.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D4A6864EEFD043B3B701AA3C /* KimKongHae.ttf */ = {isa = PBXFileReference; name = "KimKongHae.ttf"; path = "../src/assets/fonts/KimKongHae.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C0DFAF9061F54B18938592DF /* NanumGoRyeoGeurGgor.ttf */ = {isa = PBXFileReference; name = "NanumGoRyeoGeurGgor.ttf"; path = "../src/assets/fonts/NanumGoRyeoGeurGgor.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		398591D04E404E52B6FF7600 /* NanumMyeongjo.ttf */ = {isa = PBXFileReference; name = "NanumMyeongjo.ttf"; path = "../src/assets/fonts/NanumMyeongjo.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		68F3872698794F529EF0AB96 /* NanumMyeongjoBold.ttf */ = {isa = PBXFileReference; name = "NanumMyeongjoBold.ttf"; path = "../src/assets/fonts/NanumMyeongjoBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E40132F592B945A6A8E88F6E /* NanumMyeongjoExtraBold.ttf */ = {isa = PBXFileReference; name = "NanumMyeongjoExtraBold.ttf"; path = "../src/assets/fonts/NanumMyeongjoExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A336401FEDCC406386CE2C60 /* SunBatang-Bold.ttf */ = {isa = PBXFileReference; name = "SunBatang-Bold.ttf"; path = "../src/assets/fonts/SunBatang-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2851BF65561641C6873CB44A /* SunBatang-Light.ttf */ = {isa = PBXFileReference; name = "SunBatang-Light.ttf"; path = "../src/assets/fonts/SunBatang-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D1A2C864095243D680D378CE /* SunBatang-Medium.ttf */ = {isa = PBXFileReference; name = "SunBatang-Medium.ttf"; path = "../src/assets/fonts/SunBatang-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +115,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				26091B26AA504895A1951066 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -115,6 +138,25 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		26091B26AA504895A1951066 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				349D8832B7674DB080FE00F2 /* ANDONG 264 TTF.ttf */,
+				8A00936919DE4F019C4135E7 /* GodoB.ttf */,
+				F7CF31FC0E1B45A9AD136595 /* GodoM.ttf */,
+				D4A6864EEFD043B3B701AA3C /* KimKongHae.ttf */,
+				C0DFAF9061F54B18938592DF /* NanumGoRyeoGeurGgor.ttf */,
+				398591D04E404E52B6FF7600 /* NanumMyeongjo.ttf */,
+				68F3872698794F529EF0AB96 /* NanumMyeongjoBold.ttf */,
+				E40132F592B945A6A8E88F6E /* NanumMyeongjoExtraBold.ttf */,
+				A336401FEDCC406386CE2C60 /* SunBatang-Bold.ttf */,
+				2851BF65561641C6873CB44A /* SunBatang-Light.ttf */,
+				D1A2C864095243D680D378CE /* SunBatang-Medium.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -185,6 +227,17 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				D2FFFDBD7F1849ECBAD16AF6 /* ANDONG 264 TTF.ttf in Resources */,
+				815FE4C6C5DF4C09B06D68E8 /* GodoB.ttf in Resources */,
+				760ABFA922A8487FB03C0B3F /* GodoM.ttf in Resources */,
+				E208AC6EAA8C4DEA938FB03A /* KimKongHae.ttf in Resources */,
+				0BA14D65E39B4BDF826832DB /* NanumGoRyeoGeurGgor.ttf in Resources */,
+				3F356054C77A4489859DBCEB /* NanumMyeongjo.ttf in Resources */,
+				3C63BB6DFC8A43EBA0494E0C /* NanumMyeongjoBold.ttf in Resources */,
+				94A46D77DC5E4BA3940933CD /* NanumMyeongjoExtraBold.ttf in Resources */,
+				FD55C448CE224CA6BD856841 /* SunBatang-Bold.ttf in Resources */,
+				7D09DDF355974B05BC71E0CC /* SunBatang-Light.ttf in Resources */,
+				3BB38226E09C4BD5AB924226 /* SunBatang-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
