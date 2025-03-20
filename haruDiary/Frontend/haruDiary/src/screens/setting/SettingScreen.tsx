@@ -32,63 +32,74 @@ function SettingScreen(): React.JSX.Element {
       style = {[styles.container, styles.pdhr2]}
     >
       <TouchableOpacity
-        style = {[styles.button1]}
+        style = {[styles.pdvr1, styles.pdhr1, styles.dRow]}
         onPress={() => {
           
         }}
       >
         <Text
-          style = {[styles.fs1]}
+          style={[]}
         >
-          <MaterialIcons name = "lock-outline" color="#a0a0a0" size={styles.fs1.fontSize} />
+          <MaterialIcons name = "lock-outline" color={styles.fs1.color} size={styles.fs1.fontSize} />
+        </Text>
+        <Text
+          style = {[styles.fs1, styles.pdhr1]}
+        >
           잠금 설정
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style = {styles.button1}
+        style = {[styles.pdvr1, styles.pdhr1, styles.dRow]}
         onPress={() => {
           navigation.navigate("LDMode")
         }}
       >
         <Text
-          style = {[styles.fs1]}
+          style={[]}
         >
-          <Ionicons name = "moon-outline" color="#a0a0a0" size={styles.fs1.fontSize} />
+          <Ionicons name = "moon-outline" color={styles.fs1.color} size={styles.fs1.fontSize} />
+        </Text>
+        <Text
+          style = {[styles.fs1, styles.pdhr1]}
+        >
           화면 모드
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style = {styles.button1}
+        style = {[styles.pdvr1, styles.pdhr1, styles.dRow]}
         onPress={() => {
           
         }}
       >
         <Text
-          style = {[styles.fs1]}
+          style={[]}
         >
-          <MaterialIcons name = "font-download" color="#a0a0a0" size={styles.fs1.fontSize} />
+          <MaterialIcons name = "font-download" color={styles.fs1.color} size={styles.fs1.fontSize} />
+        </Text>
+        <Text
+          style = {[styles.fs1, styles.pdhr1]}
+        >
           폰트
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style = {styles.button1}
+        style = {[styles.pdvr1, styles.pdhr1, styles.dRow]}
         onPress={() => {
           
         }}
       >
         <Text
-          style = {[styles.fs1]}
+          style={[]}
         >
-          <Octicons name = "bell" color="#a0a0a0" size={styles.fs1.fontSize} />
+          <Octicons name = "bell" color={styles.fs1.color} size={styles.fs1.fontSize} />
+        </Text>
+        <Text
+          style = {[styles.fs1, styles.pdhr1]}
+        >
           알림
         </Text>
       </TouchableOpacity>
-      <Button
-        title='+3하기'
-        onPress={() => {
-          dispatch(incrementByAmount(3))
-        }}
-      />
+      
       {/* <Text
           style = {[styles.fs1]}
         >{count}</Text>

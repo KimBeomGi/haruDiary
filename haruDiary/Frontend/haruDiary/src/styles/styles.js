@@ -32,10 +32,10 @@ export const getStyles = () => {
       flex: 1,
       marginHorizontal: 16,
     },
-    button1: {
-      paddingVertical: 8,
-      backgroundColor: COLORS.bgColor,
-    },
+    // button1: {
+    //   paddingVertical: 8,
+    //   backgroundColor: COLORS.bgColor,
+    // },
     // RadioBtnItem
     radioBtnItem: {
       flexDirection : "row",
@@ -54,6 +54,14 @@ export const getStyles = () => {
     selectedCircle: {
       backgroundColor: '#c041ff', // 선택된 원의 배경색
       borderColor: '#c041ff',
+    },
+    dRow : {
+      flexDirection : "row",
+      alignItems : 'center', // 가지런하게 좌우 열이 맞게.
+    },
+    center : {
+      justifyContent : 'center',
+      alignItems : 'center',
     },
     fs1 : {
       fontSize : 20,

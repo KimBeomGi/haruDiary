@@ -48,13 +48,19 @@ function ProfileMainScreen(): React.JSX.Element {
           }}
         />
         <TouchableOpacity
+          style = {[styles.dRow]}
+
           activeOpacity={0.5}
           onPress={() => {
             navigation.navigate('Setting')
           }}
         >
           <Text>
-            <MaterialIcons name="settings" color="#a0a0a0" size={16}/>
+            <MaterialIcons name="settings" color={styles.fs1.color} size={styles.fs1.fontSize}/>
+          </Text>
+          <Text
+            style= {[styles.fs1]}
+          >
             설정하기
           </Text>
         </TouchableOpacity>
@@ -64,14 +70,5 @@ function ProfileMainScreen(): React.JSX.Element {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  content: {
-    flex: 1,
-  },
-});
 
 export default ProfileMainScreen;
