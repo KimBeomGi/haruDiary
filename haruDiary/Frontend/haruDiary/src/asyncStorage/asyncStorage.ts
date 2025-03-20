@@ -16,13 +16,45 @@ export const isLightSet = async (value1:String, value2:number) => {
   }
 };
 
-// 모드 일기 라이트-다크-시스템 
+// 모드 읽기 라이트-다크-시스템 
 export const isLightGet = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem('isLight');
     if(jsonValue === null){
       isLightSet('라이트 모드', 0)
       isLightGet()
+    }else{
+      return JSON.parse(jsonValue);
+    }
+  } catch (e) {
+    // error reading value
+    console.log(e)
+  }
+};
+
+// 폰트 저장
+export const whatFontSet = async (value1:String, value2:number) => {
+  try {
+    const value = {
+      textName : value1,
+      selectedIndex : value2,
+    }
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem('whatFont', jsonValue);
+    console.log(value)
+  } catch (e) {
+    // saving error
+    console.log(e)
+  }
+};
+
+// 폰트 읽기
+export const whatFontGet = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem('whatFont');
+    if(jsonValue === null){
+      whatFontSet('기본', 0)
+      whatFontGet()
     }else{
       return JSON.parse(jsonValue);
     }

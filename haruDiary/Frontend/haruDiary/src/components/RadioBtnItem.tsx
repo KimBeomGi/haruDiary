@@ -47,35 +47,4 @@ function RadioBtnItem(param:RadioBtnItemParam): React.JSX.Element {
   );
 }
 
-const styles = StyleSheet.create({
-  // modeBtn: {
-  //   flexDirection : "row",
-  //   // justifyContent : 'center',
-  //   justifyContent: "space-between",
-  //   alignItems : 'center',
-  //   padding : 8,
-  // },
-  // modeSelectBtn1 : {
-  //   height: 16,
-  //   width: 16,
-  //   borderRadius : 8,
-  //   borderColor : "#000000",
-  //   borderStyle : "solid",
-  //   borderWidth : 1,
-  //   marginHorizontal : 8,
-  // },
-  // selectedCircle: {
-  //   backgroundColor: '#c041ff', // 선택된 원의 배경색
-  //   borderColor: '#c041ff',
-  // },
-
-  // modeSelectBtn2 : {
-  //   fontSize : 16,
-  //   paddingHorizontal : 8
-  // },
-  // modeSelectBtn3 : {
-  //   paddingHorizontal : 8
-  // }
-});
-
 export default RadioBtnItem;

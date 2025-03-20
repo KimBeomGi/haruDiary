@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './counter/counterSlice'
 import bottomTabReducer from './bottom/bottomTabSlice'
 import themeReducer from './theme/themeSlice'
+import fontReducer from './font/fontSlice'
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     bottomTab: bottomTabReducer,
-    theme : themeReducer
+    theme : themeReducer,
+    font : fontReducer
   },
 })
 
