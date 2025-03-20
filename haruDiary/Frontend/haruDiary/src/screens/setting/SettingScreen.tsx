@@ -68,7 +68,7 @@ function SettingScreen(): React.JSX.Element {
       <TouchableOpacity
         style = {[styles.pdvr1, styles.pdhr1, styles.dRow]}
         onPress={() => {
-          
+          navigation.navigate("FontMode")
         }}
       >
         <Text

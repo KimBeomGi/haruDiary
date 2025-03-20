@@ -48,6 +48,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../store/store'; 
 import { isLightGet } from '../asyncStorage/asyncStorage';
 import { setIsDarkMode, setTheme } from '../../store/theme/themeSlice';
+import FontModeScreen from '../screens/setting/FontModeScreen';
 
 
 export type RootStackParamList = {
@@ -62,6 +63,7 @@ export type RootStackParamList = {
   AiHaru : undefined;
   Setting : undefined;
   LDMode : undefined;
+  FontMode : undefined;
 };
 
 // export type HomeTabParamList = {
@@ -158,6 +160,7 @@ function AppNavigator(): React.JSX.Element {
         <Stack.Screen name="AiHaru" component={AiHaruScreen} />
         <Stack.Screen name="Setting" component={SettingScreen} />
         <Stack.Screen name="LDMode" component={LDModeScreen} />
+        <Stack.Screen name="FontMode" component={FontModeScreen} />
         
       </Stack.Navigator>
       <BottomComponent />

@@ -35,8 +35,8 @@ function ProfileMainScreen(): React.JSX.Element {
   // }, [])
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
+    <SafeAreaView style={[styles.container]}>
+      <ScrollView style={[styles.content]}>
         <View>
           <Text
             style={[styles.fs2]}
