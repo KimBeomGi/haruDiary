@@ -1,0 +1,115 @@
+import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { SafeAreaView, Text, View, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
+
+import type { RootState } from '../../../store/store'; 
+import { useSelector, useDispatch } from 'react-redux'
+
+import {getStyles} from '../../styles/styles';
+
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Octicons from 'react-native-vector-icons/Octicons';
+import { incrementByAmount } from '../../../store/counter/counterSlice';
+
+
+type SettingScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Setting'>;
+
+
+function SettingScreen(): React.JSX.Element {
+  const navigation = useNavigation<SettingScreenNavigationProp>()
+  const count = useSelector((state: RootState) => state.counter.value)
+  const dispatch = useDispatch()
+  // store에 있는 mode와 isDarkMode를 여기로 가져오니 바로바로 잘 읽어서 온다. 사용하지도 않는데 왜지???
+  const mode = useSelector((state: RootState) => state.theme.mode)
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+  const styles = getStyles()
+
+  return (
+    <SafeAreaView
+      style = {[styles.container, styles.pdhr2]}
+    >
+      <TouchableOpacity
+        style = {[styles.button1]}
+        onPress={() => {
+          
+        }}
+      >
+        <Text
+          style = {[styles.fs1]}
+        >
+          <MaterialIcons name = "lock-outline" color="#a0a0a0" size={styles.fs1.fontSize} />
+          잠금 설정
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style = {styles.button1}
+        onPress={() => {
+          navigation.navigate("LDMode")
+        }}
+      >
+        <Text
+          style = {[styles.fs1]}
+        >
+          <Ionicons name = "moon-outline" color="#a0a0a0" size={styles.fs1.fontSize} />
+          화면 모드
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style = {styles.button1}
+        onPress={() => {
+          
+        }}
+      >
+        <Text
+          style = {[styles.fs1]}
+        >
+          <MaterialIcons name = "font-download" color="#a0a0a0" size={styles.fs1.fontSize} />
+          폰트
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style = {styles.button1}
+        onPress={() => {
+          
+        }}
+      >
+        <Text
+          style = {[styles.fs1]}
+        >
+          <Octicons name = "bell" color="#a0a0a0" size={styles.fs1.fontSize} />
+          알림
+        </Text>
+      </TouchableOpacity>
+      <Button
+        title='+3하기'
+        onPress={() => {
+          dispatch(incrementByAmount(3))
+        }}
+      />
+      {/* <Text
+          style = {[styles.fs1]}
+        >{count}</Text>
+      <Text
+          style = {[styles.fs1]}
+        >{mode}</Text>
+      <Text
+          style = {[styles.fs1]}
+        >{isDarkMode ? 'true': 'false'}</Text> */}
+    </SafeAreaView>
+    
+  );
+}
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1
+//   },
+//   content: {
+//     flex: 1,
+//   },
+// });
+
+export default SettingScreen;
