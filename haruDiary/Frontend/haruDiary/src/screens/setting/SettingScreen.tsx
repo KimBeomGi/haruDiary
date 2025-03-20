@@ -40,10 +40,10 @@ function SettingScreen(): React.JSX.Element {
         <Text
           style={[]}
         >
-          <MaterialIcons name = "lock-outline" color={styles.fs1.color} size={styles.fs1.fontSize} />
+          <MaterialIcons name = "lock-outline" color={styles.fs3.color} size={styles.fs3.fontSize} />
         </Text>
         <Text
-          style = {[styles.fs1, styles.pdhr1]}
+          style = {[styles.fs3, styles.pdhr1]}
         >
           잠금 설정
         </Text>
@@ -57,10 +57,10 @@ function SettingScreen(): React.JSX.Element {
         <Text
           style={[]}
         >
-          <Ionicons name = "moon-outline" color={styles.fs1.color} size={styles.fs1.fontSize} />
+          <Ionicons name = "moon-outline" color={styles.fs3.color} size={styles.fs3.fontSize} />
         </Text>
         <Text
-          style = {[styles.fs1, styles.pdhr1]}
+          style = {[styles.fs3, styles.pdhr1]}
         >
           화면 모드
         </Text>
@@ -74,10 +74,10 @@ function SettingScreen(): React.JSX.Element {
         <Text
           style={[]}
         >
-          <MaterialIcons name = "font-download" color={styles.fs1.color} size={styles.fs1.fontSize} />
+          <MaterialIcons name = "font-download" color={styles.fs3.color} size={styles.fs3.fontSize} />
         </Text>
         <Text
-          style = {[styles.fs1, styles.pdhr1]}
+          style = {[styles.fs3, styles.pdhr1]}
         >
           폰트
         </Text>
@@ -91,23 +91,23 @@ function SettingScreen(): React.JSX.Element {
         <Text
           style={[]}
         >
-          <Octicons name = "bell" color={styles.fs1.color} size={styles.fs1.fontSize} />
+          <Octicons name = "bell" color={styles.fs3.color} size={styles.fs3.fontSize} />
         </Text>
         <Text
-          style = {[styles.fs1, styles.pdhr1]}
+          style = {[styles.fs3, styles.pdhr1]}
         >
           알림
         </Text>
       </TouchableOpacity>
       
       {/* <Text
-          style = {[styles.fs1]}
+          style = {[styles.fs3]}
         >{count}</Text>
       <Text
-          style = {[styles.fs1]}
+          style = {[styles.fs3]}
         >{mode}</Text>
       <Text
-          style = {[styles.fs1]}
+          style = {[styles.fs3]}
         >{isDarkMode ? 'true': 'false'}</Text> */}
     </SafeAreaView>
     

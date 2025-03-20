@@ -38,15 +38,12 @@ function ProfileMainScreen(): React.JSX.Element {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>
-          <Text>ProfileMainScreen</Text>
+          <Text
+            style={[styles.fs2]}
+          >
+            ProfileMainScreen
+          </Text>
         </View>
-        <Button
-          title='프로필'
-          onPress={() => {
-            // navigation.navigate('Home')
-            navigation.navigate('ProfileMain')
-          }}
-        />
         <TouchableOpacity
           style = {[styles.dRow]}
 
@@ -56,15 +53,15 @@ function ProfileMainScreen(): React.JSX.Element {
           }}
         >
           <Text>
-            <MaterialIcons name="settings" color={styles.fs1.color} size={styles.fs1.fontSize}/>
+            <MaterialIcons name="settings" color={styles.fs2.color} size={styles.fs2.fontSize}/>
           </Text>
           <Text
-            style= {[styles.fs1]}
+            style= {[styles.fs2]}
           >
             설정하기
           </Text>
         </TouchableOpacity>
-        <Text>{count}</Text>
+        {/* <Text>{count}</Text> */}
       </ScrollView>
       {/* <BottomComponent/> */}
     </SafeAreaView>

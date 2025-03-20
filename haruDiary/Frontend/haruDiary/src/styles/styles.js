@@ -5,13 +5,15 @@ import { useEffect } from 'react';
 // 색상 상수 객체 생성
 const DARK_COLORS = {
   bgColor: '#1C1D1F',
-  textColor : "#a0a0a0"
+  textColor : "#a0a0a0",
+  bottomBgColor : "#363940",
   // 다른 색상 상수 추가
 };
 
 const LIGHT_COLORS = {
   bgColor: '#FFFFFF',
-  textColor : "#000000"
+  textColor : "#000000",
+  bottomBgColor : "#f5f5f5",
   // 다른 색상 상수 추가
 };
 
@@ -22,7 +24,7 @@ export const getStyles = () => {
 
   return StyleSheet.create({
     bgColor : {
-      backgroundColor : COLORS.bgColor
+      backgroundColor : COLORS.bgColor,
     },
     container: {
       flex: 1,
@@ -44,9 +46,9 @@ export const getStyles = () => {
       alignItems : 'center',
     },
     radioSelectBtn : {
-      height: 20,
-      width: 20,
-      borderRadius : 10,
+      height: 20, // fs3 사이즈
+      width: 20,  // fs3 사이즈
+      borderRadius : 10,  // fs3 절반사이즈
       borderColor : COLORS.textColor,
       borderStyle : "solid",
       borderWidth : 1,
@@ -63,8 +65,32 @@ export const getStyles = () => {
       justifyContent : 'center',
       alignItems : 'center',
     },
+    fs0 : {
+      fontSize : 8,
+      color : COLORS.textColor,
+    },
     fs1 : {
+      fontSize : 12,
+      color : COLORS.textColor,
+    },
+    fs2 : {
+      fontSize : 16,
+      color : COLORS.textColor,
+    },
+    fs3 : {
       fontSize : 20,
+      color : COLORS.textColor,
+    },
+    fs4 : {
+      fontSize : 24,
+      color : COLORS.textColor,
+    },
+    fs5 : {
+      fontSize : 28,
+      color : COLORS.textColor,
+    },
+    fs6 : { // 사용할 일 없을 듯
+      fontSize : 32,
       color : COLORS.textColor,
     },
     pdhr1 : {
@@ -79,5 +105,21 @@ export const getStyles = () => {
     pdvr2 : {
       paddingVertical : 16,
     },
+
+    // bottom tab 전용
+    btmColor : {
+
+    },
+    btmContainer: {
+      backgroundColor : COLORS.bottomBgColor,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      paddingVertical : 8,
+      borderTopWidth: 1,
+      borderTopColor: '#a0a0a0',
+    },
+    btmEachPosition: {
+      alignItems: 'center',
+    }
   });
 };

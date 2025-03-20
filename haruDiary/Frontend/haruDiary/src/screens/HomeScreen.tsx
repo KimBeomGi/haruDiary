@@ -71,8 +71,11 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.content}>
         <View>
-          <Text>홈스크린</Text>
-          <Text>잘되나</Text>
+          <Text
+            style={[styles.fs2]}
+          >
+            홈스크린
+          </Text>
         </View>
       </ScrollView>
       <WriteBtnComponent />      

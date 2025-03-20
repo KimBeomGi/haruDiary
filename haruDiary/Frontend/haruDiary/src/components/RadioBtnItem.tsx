@@ -35,11 +35,11 @@ function RadioBtnItem(param:RadioBtnItemParam): React.JSX.Element {
       >
         <View style={{flexDirection : "row", alignItems : "center"}}>
           <View style={[styles.radioSelectBtn, styles.pdhr1, param.selected && styles.selectedCircle]}></View>
-          <Text style={[styles.fs1, styles.pdhr1]}>{param.textName}</Text>
+          <Text style={[styles.fs3, styles.pdhr1]}>{param.textName}</Text>
         </View>
         {param.iconName && (
           <Text style={styles.pdhr1}>
-            <MaterialIcons name={param.iconName} size={styles.fs1.fontSize} color={styles.fs1.color}/>
+            <MaterialIcons name={param.iconName} size={styles.fs3.fontSize} color={styles.fs3.color}/>
           </Text>
         )}
       </TouchableOpacity>
