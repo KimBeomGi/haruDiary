@@ -117,11 +117,12 @@ function FontModeScreen(): React.JSX.Element {
         {isCheck && (
           <RadioBtnGroup
             names={[
-              {textName :'기본', iconName : null, selected : 0},
-              {textName :'1번 글자', iconName : null, selected : 1},
-              {textName :'2번 글자', iconName : null, selected : 2},
-              {textName :'3번 글자', iconName : null, selected : 3},
-              {textName :'4번 글자', iconName : null, selected : 4},
+              {textName :'나눔명조', iconName : null, selected : 0},
+              {textName :'나눔손글씨 고려글꼴', iconName : null, selected : 1},
+              {textName :'순바탕', iconName : null, selected : 2},
+              {textName :'온글잎 김콩해', iconName : null, selected : 3},
+              {textName :'안동 이육사체', iconName : null, selected : 4},
+              {textName :'고도체', iconName : null, selected : 5},
             ]}
             onSelect={handleSelect} // 콜백 함수 전달
             selected={selected} // 선택된 라디오 버튼 인덱스 전달
