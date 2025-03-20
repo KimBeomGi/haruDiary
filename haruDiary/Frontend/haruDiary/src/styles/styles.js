@@ -93,6 +93,12 @@ export const getStyles = () => {
       fontSize : 32,
       color : COLORS.textColor,
     },
+    fw1 : { // 기본
+      fontWeight : "400"
+    },
+    fw2 : {
+      fontWeight : "600"
+    },
     pdhr1 : {
       paddingHorizontal : 8
     },
@@ -105,11 +111,27 @@ export const getStyles = () => {
     pdvr2 : {
       paddingVertical : 16,
     },
+    mghr1 : {
+      marginHorizontal : 8
+    },
+    mghr2 : {
+      marginHorizontal : 16
+    },
+    mgvr1 : {
+      marginVertical : 8
+    },
+    mgvr2 : {
+      marginVertical : 16
+    },
+
+    textInput: {
+      height: 200,
+      margin: 12,
+      borderWidth: 1,
+      padding: 10,
+    },
 
     // bottom tab 전용
-    btmColor : {
-
-    },
     btmContainer: {
       backgroundColor : COLORS.bottomBgColor,
       flexDirection: 'row',
