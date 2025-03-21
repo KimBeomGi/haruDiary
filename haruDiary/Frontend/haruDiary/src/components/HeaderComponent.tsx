@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../store/store'; 
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { getStyles } from '../styles/styles';
 
 type HeaderComponentNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -16,14 +17,18 @@ function HeaderComponent(): React.JSX.Element {
   const navigation = useNavigation<HeaderComponentNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  const styles = getStyles()
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.headerContainer]}>
       <TouchableOpacity
-        onPress={() => {navigation.navigate('Home')}}
+        onPress={() => {
+          // navigation.navigate('Home')
+          navigation.popToTop()
+        }}
       >
         <Text>
-          <Icon name="laptop-chromebook" color="#5d00fd55" size={24} />
+          <Icon name="laptop-chromebook" color={styles.headerIcon.color} size={24} />
         </Text>
       </TouchableOpacity>
       {/* <Button
@@ -36,14 +41,7 @@ function HeaderComponent(): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 16,
-    backgroundColor: '#eee',
-    borderTopWidth: 1,
-    // borderTopColor: '#eee',
-  },
+  
 });
 
 export default HeaderComponent;

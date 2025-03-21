@@ -44,6 +44,7 @@ import SearchPostScreen from '../screens/reads/SearchPostScreen';
 import ChartPostScreen from '../screens/reads/ChartPostScreen';
 import BottomComponent from '../components/BottomComponent';
 import LDModeScreen from '../screens/setting/LDModeScreen';
+import AlarmSetScreen from '../screens/setting/AlarmSetScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../store/store'; 
 import { isLightGet, whatFontGet, whatFSValueGet } from '../asyncStorage/asyncStorage';
@@ -65,6 +66,7 @@ export type RootStackParamList = {
   Setting : undefined;
   LDMode : undefined;
   FontMode : undefined;
+  AlarmSet : undefined;
 };
 
 // export type HomeTabParamList = {
@@ -163,6 +165,7 @@ function AppNavigator(): React.JSX.Element {
         <Stack.Screen name="Setting" component={SettingScreen} />
         <Stack.Screen name="LDMode" component={LDModeScreen} />
         <Stack.Screen name="FontMode" component={FontModeScreen} />
+        <Stack.Screen name="AlarmSet" component={AlarmSetScreen} />
         
       </Stack.Navigator>
       <BottomComponent />

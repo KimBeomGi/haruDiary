@@ -6,12 +6,16 @@ const DARK_COLORS = {
   bgColor: '#1C1D1F',
   textColor : "#a0a0a0",
   bottomBgColor : "#363940",
+  headerIconColor : "#b485ff",
+  headerBgColor: "#1C1D1F",
 };
 
 const LIGHT_COLORS = {
   bgColor: '#FFFFFF',
   textColor : "#000000",
   bottomBgColor : "#f5f5f5",
+  headerIconColor : "#5d00fd",
+  headerBgColor: "#FFFFFF",
 };
 
 // const preparedFonts =[
@@ -66,6 +70,11 @@ export const getStyles = () => {
     },
     dRow : {
       flexDirection : "row",
+      alignItems : 'center', // 가지런하게 좌우 열이 맞게.
+    },
+    dRowSB : {
+      flexDirection : "row",
+      justifyContent : 'space-between',
       alignItems : 'center', // 가지런하게 좌우 열이 맞게.
     },
     center : {
@@ -144,7 +153,19 @@ export const getStyles = () => {
       borderWidth: 1,
       padding: 10,
     },
-
+    
+    // header 전용
+    headerContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      padding: 16,
+      // borderTopColor: '#eee',
+      backgroundColor: COLORS.bgColor,
+      borderTopWidth: 1,
+    },
+    headerIcon:{
+      color: COLORS.headerIconColor,
+    },
     // bottom tab 전용
     btmContainer: {
       backgroundColor : COLORS.bottomBgColor,

@@ -24,31 +24,14 @@ function WritePostScreen(): React.JSX.Element {
   /////////////////
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={[styles.container]}
+    >
       <View>
-        <Text>WritePostScreen</Text>
-        <Text>잘되나</Text>
+        <Text
+          style={[styles.fs3]}
+        >WritePostScreen</Text>
       </View>
-      <Button
-        title='프로필'
-        onPress={() => {
-          // navigation.navigate('Home')
-          navigation.navigate('ProfileMain')
-        }}
-      />
-      <Button
-        title='포스트 자세히 보기'
-        onPress={() => {
-          navigation.navigate('DetailPost')
-        }}
-      />
-      <Button
-        title='글쓰기'
-        onPress={() => {
-          navigation.navigate('WritePost')
-        }}
-      />
-      <Text>현재 갯수는 : {count}개</Text>
     </SafeAreaView>
     
   );

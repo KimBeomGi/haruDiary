@@ -45,10 +45,10 @@ function SettingScreen(): React.JSX.Element {
 
   return (
     <SafeAreaView
-      style = {[styles.container, styles.pdhr2]}
+      style = {[styles.container, styles.pdhr2, styles.pdvr2]}
     >
       <TouchableOpacity
-        style = {[styles.pdvr1, styles.pdhr1, styles.dRow]}
+        style = {[styles.pdvr2, styles.pdhr1, styles.dRow]}
         onPress={() => {
           
         }}
@@ -65,7 +65,7 @@ function SettingScreen(): React.JSX.Element {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style = {[styles.pdvr1, styles.pdhr1, styles.dRow]}
+        style = {[styles.pdvr2, styles.pdhr1, styles.dRow]}
         onPress={() => {
           navigation.navigate("LDMode")
         }}
@@ -82,7 +82,7 @@ function SettingScreen(): React.JSX.Element {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style = {[styles.pdvr1, styles.pdhr1, styles.dRow]}
+        style = {[styles.pdvr2, styles.pdhr1, styles.dRow]}
         onPress={() => {
           navigation.navigate("FontMode")
         }}
@@ -99,9 +99,9 @@ function SettingScreen(): React.JSX.Element {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style = {[styles.pdvr1, styles.pdhr1, styles.dRow]}
+        style = {[styles.pdvr2, styles.pdhr1, styles.dRow]}
         onPress={() => {
-          
+          navigation.navigate("AlarmSet")
         }}
       >
         <Text
