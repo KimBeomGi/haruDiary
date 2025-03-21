@@ -22,10 +22,12 @@ const preparedFonts =[
 // 테마에 따라 스타일 생성
 export const getStyles = () => {
   const isDarkMode = store.getState().theme.isDarkMode; // Redux 상태 가져오기
-  const usingFontFamilyIdx = store.getState().font.fontFmailyidx; // Redux 상태 가져오기
+  const COLORS = isDarkMode ? DARK_COLORS : LIGHT_COLORS;
   const usingFontFamily = store.getState().font.fontFamily; // Redux 상태 가져오기
   // const usingFontFamily = preparedFonts[usingFontFamilyIdx][1]
-  const COLORS = isDarkMode ? DARK_COLORS : LIGHT_COLORS;
+  const usingFontSizeValue = store.getState().font.fontSizeValue;
+  const fsRate = [0.75, 0.825, 1, 1.25, 1.5]
+
 
   return StyleSheet.create({
     bgColor : {
@@ -71,37 +73,37 @@ export const getStyles = () => {
       alignItems : 'center',
     },
     fs0 : {
-      fontSize : 8,
+      fontSize : 8 * fsRate[usingFontSizeValue],
       color : COLORS.textColor,
       fontFamily : usingFontFamily
     },
     fs1 : {
-      fontSize : 12,
+      fontSize : 12 * fsRate[usingFontSizeValue],
       color : COLORS.textColor,
       fontFamily : usingFontFamily
     },
     fs2 : {
-      fontSize : 16,
+      fontSize : 16 * fsRate[usingFontSizeValue],
       color : COLORS.textColor,
       fontFamily : usingFontFamily
     },
     fs3 : {
-      fontSize : 20,
+      fontSize : 20 * fsRate[usingFontSizeValue],
       color : COLORS.textColor,
       fontFamily : usingFontFamily
     },
     fs4 : {
-      fontSize : 24,
+      fontSize : 24 * fsRate[usingFontSizeValue],
       color : COLORS.textColor,
       fontFamily : usingFontFamily
     },
     fs5 : {
-      fontSize : 28,
+      fontSize : 28 * fsRate[usingFontSizeValue],
       color : COLORS.textColor,
       fontFamily : usingFontFamily
     },
     fs6 : { // 사용할 일 없을 듯
-      fontSize : 32,
+      fontSize : 32 * fsRate[usingFontSizeValue],
       color : COLORS.textColor,
       fontFamily : usingFontFamily
     },

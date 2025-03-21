@@ -65,6 +65,37 @@ export const whatFontGet = async () => {
   }
 };
 
+// 폰트 사이즈 저장
+export const whatFSValueSet = async (value1:number) => {
+  try {
+    const value = {
+      fsValue : value1,
+    }
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem('whatFSValue', jsonValue);
+    console.log(value)
+  } catch (e) {
+    // saving error
+    console.log(e)
+  }
+};
+
+// 폰트 사이즈 읽기
+export const whatFSValueGet = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem('whatFSValue');
+    if(jsonValue === null){
+      whatFSValueSet(2)
+      whatFSValueGet()
+    }else{
+      return JSON.parse(jsonValue);
+    }
+  } catch (e) {
+    // error reading value
+    console.log(e)
+  }
+};
+
 // 데이터 저장 String
 // const storeData = async (value) => {
 //   try {

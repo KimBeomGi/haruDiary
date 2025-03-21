@@ -46,10 +46,10 @@ import BottomComponent from '../components/BottomComponent';
 import LDModeScreen from '../screens/setting/LDModeScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../store/store'; 
-import { isLightGet, whatFontGet } from '../asyncStorage/asyncStorage';
+import { isLightGet, whatFontGet, whatFSValueGet } from '../asyncStorage/asyncStorage';
 import { setIsDarkMode, setTheme } from '../../store/theme/themeSlice';
 import FontModeScreen from '../screens/setting/FontModeScreen';
-import { setFontFamily } from '../../store/font/fontSlice';
+import { setFontFamily, setFontSizeValue } from '../../store/font/fontSlice';
 
 
 export type RootStackParamList = {
@@ -101,12 +101,16 @@ function AppNavigator(): React.JSX.Element {
     const fetchMode = async () => {
       const themeValue = await isLightGet()
       const fontValue = await whatFontGet()
+      const whatFSValue = await whatFSValueGet()
       if(themeValue){
         dispatch(setTheme(preparedTheme[themeValue.selectedIndex][1]))
         // setIsLoading(false); // 테마 설정 완료 후 로딩 상태 변경
       }
       if(fontValue){
         dispatch(setFontFamily(preparedFonts[fontValue.selectedIndex][1]))
+      }
+      if(whatFSValue){
+        dispatch(setFontSizeValue(whatFSValue.fsValue))
       }
     }
     fetchMode()
