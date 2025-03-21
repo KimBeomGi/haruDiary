@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -13,6 +13,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import { incrementByAmount } from '../../../store/counter/counterSlice';
+import { selectTab } from '../../../store/bottom/bottomTabSlice';
 
 
 type SettingScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Setting'>;
@@ -26,6 +27,17 @@ function SettingScreen(): React.JSX.Element {
   const mode = useSelector((state: RootState) => state.theme.mode)
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
   const styles = getStyles()
+
+  useFocusEffect(
+    React.useCallback(() => {
+      dispatch(selectTab(3))// bottomtab의 표시
+      
+      return () => {
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      };
+    }, [])
+  );
 
   return (
     <SafeAreaView

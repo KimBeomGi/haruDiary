@@ -5,7 +5,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
 
-
 import type { RootState } from '../../../store/store'; 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -20,9 +19,7 @@ import { isLightGet, isLightSet } from '../../asyncStorage/asyncStorage';
 import { setTheme } from '../../../store/theme/themeSlice';
 import { selectTab } from '../../../store/bottom/bottomTabSlice';
 
-
 type LDModeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'LDMode'>;
-
 
 function LDModeScreen(): React.JSX.Element {
   const navigation = useNavigation<LDModeScreenNavigationProp>()
@@ -69,13 +66,7 @@ function LDModeScreen(): React.JSX.Element {
           setSelectedMode(value.textName);
           setSelected(value.selectedIndex);
           setIsCheck(true)
-          if(value.textName === '라이트 모드'){
-            dispatch(setTheme('light'))
-          }else if(value.textName === '다크 모드'){
-            dispatch(setTheme('dark'))
-          }else{
-            dispatch(setTheme('system'))
-          }
+          dispatch(setTheme(preparedMode[value.selectedIndex][1]))
         }
       };
       fetchMode();
