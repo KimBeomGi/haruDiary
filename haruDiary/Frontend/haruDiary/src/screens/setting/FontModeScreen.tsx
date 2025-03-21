@@ -14,6 +14,7 @@ import {getStyles} from '../../styles/styles';
 import RadioBtnGroup from '../../components/RadioBtnGroup';
 import { isLightGet, isLightSet, whatFontGet, whatFontSet } from '../../asyncStorage/asyncStorage';
 import { setFontFamily, setFontSize } from '../../../store/font/fontSlice';
+import { selectTab } from '../../../store/bottom/bottomTabSlice';
 
 
 
@@ -57,6 +58,7 @@ function FontModeScreen(): React.JSX.Element {
 
   useFocusEffect(
     React.useCallback(() => {
+      dispatch(selectTab(3))// bottomtab의 표시
       // promise 때문에 async를 이용해줌
       const fetchMode = async () => {
         const value = await whatFontGet();

@@ -18,6 +18,7 @@ import RadioBtnItem from '../../components/RadioBtnItem';
 import RadioBtnGroup from '../../components/RadioBtnGroup';
 import { isLightGet, isLightSet } from '../../asyncStorage/asyncStorage';
 import { setTheme } from '../../../store/theme/themeSlice';
+import { selectTab } from '../../../store/bottom/bottomTabSlice';
 
 
 type LDModeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'LDMode'>;
@@ -33,7 +34,19 @@ function LDModeScreen(): React.JSX.Element {
   const [isCheck, setIsCheck] = useState(false)
   const mode = useSelector((state: RootState) => state.theme.mode)
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+  const [preparedMode, setPreparedMode] = useState<[string, 'light' | 'dark' | 'system', string][]>([
+    ["라이트 모드", "light", "light-mode"], ["다크 모드", "dark", "dark-mode"], ["시스템 모드", "system", "wb-twilight"],
+  ])
 
+  // 라디오 버튼에 들어갈 내용들을 만들어주는 함수
+  const getRadioBtnNames = (modes: string[][]): { textName: string; textFont: null; iconName: string; selected: number }[] => {
+    return modes.map((mode, index) => ({
+      textName: mode[0],
+      textFont: null,
+      iconName: mode[2],
+      selected: index,
+    }));
+  };
 
   const handleSelect = (textName: string, selectedIndex: number) => {
     setSelectedMode(textName);
@@ -41,15 +54,13 @@ function LDModeScreen(): React.JSX.Element {
     // 선택된 모드에 따라 필요한 작업 수행
     isLightSet(textName, selectedIndex)
     // store에 작업
-    let mode: 'light' | 'dark' | 'system' = 'light';
-    if (selectedIndex === 0) mode = 'light';
-    if (selectedIndex === 1) mode = 'dark';
-    if (selectedIndex === 2) mode = 'system';
+    let mode = preparedMode[selectedIndex][1]
     dispatch(setTheme(mode));
   };
 
   useFocusEffect(
     React.useCallback(() => {
+      dispatch(selectTab(3))// bottomtab의 표시
       // promise 때문에 async를 이용해줌
       const fetchMode = async () => {
         const value = await isLightGet();
@@ -82,11 +93,7 @@ function LDModeScreen(): React.JSX.Element {
     >
       {isCheck && (
         <RadioBtnGroup
-          names={[
-            {textName :'라이트 모드', textFont: null, iconName : 'light-mode', selected : 0},
-            {textName :'다크 모드', textFont: null, iconName : 'dark-mode', selected : 1},
-            {textName :'시스템 모드', textFont: null, iconName : 'wb-twilight', selected : 2},
-          ]}
+          names={getRadioBtnNames(preparedMode)}
           onSelect={handleSelect} // 콜백 함수 전달
           selected={selected} // 선택된 라디오 버튼 인덱스 전달
         />
