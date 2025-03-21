@@ -35,9 +35,10 @@ function LDModeScreen(): React.JSX.Element {
   const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
   const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
   /////////////////
-  const [preparedMode, setPreparedMode] = useState<[string, 'light' | 'dark' | 'system', string][]>([
-    ["라이트 모드", "light", "light-mode"], ["다크 모드", "dark", "dark-mode"], ["시스템 모드", "system", "wb-twilight"],
-  ])
+  // const [preparedTheme, setPreparedTheme] = useState<[string, 'light' | 'dark' | 'system', string][]>([
+  //   ["라이트 모드", "light", "light-mode"], ["다크 모드", "dark", "dark-mode"], ["시스템 모드", "system", "wb-twilight"],
+  // ])
+  const preparedTheme = useSelector((state: RootState) => state.theme.preparedTheme)
 
   // 라디오 버튼에 들어갈 내용들을 만들어주는 함수
   const getRadioBtnNames = (modes: string[][]): { textName: string; textFont: null; iconName: string; selected: number }[] => {
@@ -55,7 +56,7 @@ function LDModeScreen(): React.JSX.Element {
     // 선택된 모드에 따라 필요한 작업 수행
     isLightSet(textName, selectedIndex)
     // store에 작업
-    let mode = preparedMode[selectedIndex][1]
+    let mode = preparedTheme[selectedIndex][1]
     dispatch(setTheme(mode));
   };
 
@@ -70,7 +71,7 @@ function LDModeScreen(): React.JSX.Element {
           setSelectedMode(value.textName);
           setSelected(value.selectedIndex);
           setIsCheck(true)
-          dispatch(setTheme(preparedMode[value.selectedIndex][1]))
+          dispatch(setTheme(preparedTheme[value.selectedIndex][1]))
         }
       };
       fetchMode();
@@ -88,7 +89,7 @@ function LDModeScreen(): React.JSX.Element {
     >
       {isCheck && (
         <RadioBtnGroup
-          names={getRadioBtnNames(preparedMode)}
+          names={getRadioBtnNames(preparedTheme)}
           onSelect={handleSelect} // 콜백 함수 전달
           selected={selected} // 선택된 라디오 버튼 인덱스 전달
         />

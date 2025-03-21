@@ -84,14 +84,12 @@ function AppNavigator(): React.JSX.Element {
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
   // const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
   ////////////////////////////
-  const [preparedTheme, setPreparedTheme] = useState<[string, 'light' | 'dark' | 'system', string][]>([
-    ["라이트 모드", "light", "light-mode"], ["다크 모드", "dark", "dark-mode"], ["시스템 모드", "system", "wb-twilight"],
-  ])
-  const [preparedFonts, setPreparedFonts] = useState([
-    ["나눔명조", "NanumMyeongjo"], ["나눔손글씨 고려글꼴","NanumGoRyeoGeurGgor"], ["순바탕", "SunBatang-Medium"], 
-    ["온글잎 김콩해", "KimKongHae"], ["안동 이육사체", "ANDONG 264 TTF"], ["고도체", "GodoM"]
-  ])
+  // const [preparedTheme, setPreparedTheme] = useState<[string, 'light' | 'dark' | 'system', string][]>([
+  //   ["라이트 모드", "light", "light-mode"], ["다크 모드", "dark", "dark-mode"], ["시스템 모드", "system", "wb-twilight"],
+  // ])
+  const preparedTheme = useSelector((state: RootState) => state.theme.preparedTheme)
   const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
+  const preparedFonts = useSelector((state: RootState) => state.font.preparedFonts)
   const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
   
 

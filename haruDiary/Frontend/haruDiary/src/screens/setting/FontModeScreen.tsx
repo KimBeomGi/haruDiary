@@ -36,10 +36,11 @@ function FontModeScreen(): React.JSX.Element {
   /////////////////
   // 글꼴
   const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
-  const [preparedFonts, setPreparedFonts] = useState([
-    ["나눔명조", "NanumMyeongjo"], ["나눔손글씨 고려글꼴","NanumGoRyeoGeurGgor"], ["순바탕", "SunBatang-Medium"], 
-    ["온글잎 김콩해", "KimKongHae"], ["안동 이육사체", "ANDONG 264 TTF"], ["고도체", "GodoM"]
-  ])
+  const preparedFonts = useSelector((state: RootState) => state.font.preparedFonts)
+  // const [preparedFonts, setPreparedFonts] = useState([
+  //   ["나눔명조", "NanumMyeongjo"], ["나눔손글씨 고려글꼴","NanumGoRyeoGeurGgor"], ["순바탕", "SunBatang-Medium"], 
+  //   ["온글잎 김콩해", "KimKongHae"], ["안동 이육사체", "ANDONG 264 TTF"], ["고도체", "GodoM"]
+  // ])
   // 폰트사이즈 0 ~ 4
   const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
   const [fontSizeValueStep, setFontSizeValueStep] = useState(
@@ -121,10 +122,12 @@ function FontModeScreen(): React.JSX.Element {
           </Text>
           {/* 슬라이더 */}
           {/* 라이브러리 이용해야겠군. */}
-          <View>
+          <View
+            style={[styles.center]}
+          >
             <Slider
               // style={{width: 300, height: 40}}
-              style={{height: 60}}
+              style={{width: 300, height: 60}}
               value={fontSizeValue}
               onValueChange={(value) => {return handleWhatFSValueSet(value)}}
               minimumValue={0}
@@ -159,7 +162,7 @@ function FontModeScreen(): React.JSX.Element {
             selected={selected} // 선택된 라디오 버튼 인덱스 전달
           />
         )}
-        <Text>{fontFamily}</Text>
+        {/* <Text>{fontFamily}</Text> */}
         
       </ScrollView>
     </SafeAreaView>

@@ -116,17 +116,7 @@ function SettingScreen(): React.JSX.Element {
         </Text>
       </TouchableOpacity>
     </SafeAreaView>
-    
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1
-//   },
-//   content: {
-//     flex: 1,
-//   },
-// });
 
 export default SettingScreen;

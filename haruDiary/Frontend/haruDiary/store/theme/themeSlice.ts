@@ -5,13 +5,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ThemeState {
   mode: 'light' | 'dark' | 'system';
-  isDarkMode : boolean
+  isDarkMode : boolean;
+  preparedTheme : [string, 'light' | 'dark' | 'system', string][];
 }
 
 const initialState: ThemeState = {
   // mode: systemColorScheme || 'light',
   mode: 'light', // 기본 모드는 'light'
   isDarkMode : false,
+  preparedTheme : [
+    ["라이트 모드", "light", "light-mode"], ["다크 모드", "dark", "dark-mode"], ["시스템 모드", "system", "wb-twilight"],
+  ]
 };
 
 const themeSlice = createSlice({

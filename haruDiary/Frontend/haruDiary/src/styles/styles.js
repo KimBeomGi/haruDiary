@@ -14,20 +14,20 @@ const LIGHT_COLORS = {
   bottomBgColor : "#f5f5f5",
 };
 
-const preparedFonts =[
-  ["나눔명조", "NanumMyeongjo"], ["나눔손글씨 고려글꼴","NanumGoRyeoGeurGgor"], ["순바탕", "SunBatang-Medium"], 
-  ["온글잎 김콩해", "KimKongHae"], ["안동 이육사체", "ANDONG 264 TTF"], ["고도체", "GodoM"]
-]
+// const preparedFonts =[
+//   ["나눔명조", "NanumMyeongjo"], ["나눔손글씨 고려글꼴","NanumGoRyeoGeurGgor"], ["순바탕", "SunBatang-Medium"], 
+//   ["온글잎 김콩해", "KimKongHae"], ["안동 이육사체", "ANDONG 264 TTF"], ["고도체", "GodoM"]
+// ]
 
 // 테마에 따라 스타일 생성
 export const getStyles = () => {
   const isDarkMode = store.getState().theme.isDarkMode; // Redux 상태 가져오기
   const COLORS = isDarkMode ? DARK_COLORS : LIGHT_COLORS;
+  const preparedFont = store.getState().font.preparedFonts;
   const usingFontFamily = store.getState().font.fontFamily; // Redux 상태 가져오기
   // const usingFontFamily = preparedFonts[usingFontFamilyIdx][1]
   const usingFontSizeValue = store.getState().font.fontSizeValue;
-  const fsRate = [0.75, 0.825, 1, 1.25, 1.5]
-
+  const fsRate = store.getState().font.fsRate;
 
   return StyleSheet.create({
     bgColor : {
@@ -53,9 +53,9 @@ export const getStyles = () => {
       alignItems : 'center',
     },
     radioSelectBtn : {
-      height: 20, // fs3 사이즈
-      width: 20,  // fs3 사이즈
-      borderRadius : 10,  // fs3 절반사이즈
+      height: 20 * fsRate[usingFontSizeValue], // fs3 사이즈
+      width: 20 * fsRate[usingFontSizeValue],  // fs3 사이즈
+      borderRadius : 10 * fsRate[usingFontSizeValue],  // fs3 절반사이즈
       borderColor : COLORS.textColor,
       borderStyle : "solid",
       borderWidth : 1,
