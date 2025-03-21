@@ -83,9 +83,9 @@ function LDModeScreen(): React.JSX.Element {
       {isCheck && (
         <RadioBtnGroup
           names={[
-            {textName :'라이트 모드', iconName : 'light-mode', selected : 0},
-            {textName :'다크 모드', iconName : 'dark-mode', selected : 1},
-            {textName :'시스템 모드', iconName : 'wb-twilight', selected : 2},
+            {textName :'라이트 모드', textFont: null, iconName : 'light-mode', selected : 0},
+            {textName :'다크 모드', textFont: null, iconName : 'dark-mode', selected : 1},
+            {textName :'시스템 모드', textFont: null, iconName : 'wb-twilight', selected : 2},
           ]}
           onSelect={handleSelect} // 콜백 함수 전달
           selected={selected} // 선택된 라디오 버튼 인덱스 전달

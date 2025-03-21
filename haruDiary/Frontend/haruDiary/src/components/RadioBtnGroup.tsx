@@ -15,6 +15,7 @@ type RadioBtnGroupNavigationProp = NativeStackNavigationProp<RootStackParamList>
 type RadioBtnGroupParam = {
   names : {
     textName: string;
+    textFont: string | null;
     iconName: string | null;
     selected: number;
   }[];
@@ -37,6 +38,7 @@ function RadioBtnGroup(param : RadioBtnGroupParam): React.JSX.Element {
         <RadioBtnItem 
           key={index} 
           textName={item.textName} 
+          textFont={item.textFont}
           iconName={item.iconName}
           selected={selected === index}
           onPress={() => {

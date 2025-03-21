@@ -14,6 +14,7 @@ import { getStyles } from '../styles/styles';
 type RadioBtnItemNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 type RadioBtnItemParam = {
   textName : string;
+  textFont: string | null;
   iconName : string | null;
   selected : boolean;
   onPress : () => void;
@@ -35,7 +36,7 @@ function RadioBtnItem(param:RadioBtnItemParam): React.JSX.Element {
       >
         <View style={{flexDirection : "row", alignItems : "center"}}>
           <View style={[styles.radioSelectBtn, styles.pdhr1, param.selected && styles.selectedCircle]}></View>
-          <Text style={[styles.fs3, styles.pdhr1]}>{param.textName}</Text>
+          <Text style={[styles.fs3, styles.pdhr1, param.textFont ? { fontFamily:`${param.textFont}`} : null,]}>{param.textName}</Text>
         </View>
         {param.iconName && (
           <Text style={styles.pdhr1}>

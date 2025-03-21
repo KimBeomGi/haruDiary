@@ -29,6 +29,9 @@ function FontModeScreen(): React.JSX.Element {
   const [selected, setSelected] = useState(0)
   const [isCheck, setIsCheck] = useState(false)
   const fontfamily = useSelector((state: RootState) => state.font.fontFamily)
+  const [preparedFonts, setPreparedFonts] = useState([
+    "NanumMyeongjo", "NanumGoRyeoGeurGgor", "SunBatang-Medium", "KimKongHae", "ANDONG 264 TTF", "GodoM"
+  ])
   const [lorem, setLorem] = useState("우는 날들을 이런 없이 향할 회한도 걸 왔을까? 그 마른 동산에 너무나 하나였던 보내 시각에 타는 때. 건너온 기억해주오 편지도 하늘을 불러주던 밤을 잎들은 위에도 말했다. \n\n목란배 내지 번을 했던 아무 이네들은 있다. 부드럽게, 나는 별에도 생을 아무것도 이름자를 자신을 청명한 하나였던 이름과, 지우지 꽃을 생명을 가을 말없이 말 오매불망 아니라 했다.")
 
   const handleSelect = (textName: string, selectedIndex: number) => {
@@ -55,18 +58,8 @@ function FontModeScreen(): React.JSX.Element {
         if (value) {
           setSelectedFont(value.textName);
           setSelected(value.selectedIndex);
+          dispatch(setFontFamily(preparedFonts[value.selectedIndex]))
           setIsCheck(true)  // value가 들어온 후에 렌더링하기 위함.
-          if(value.selectedIndex === 0){
-            dispatch(setFontFamily('basic'))
-          }else if(value.selectedIndex === 1){
-            dispatch(setFontFamily('1st'))
-          }else if(value.selectedIndex === 2){
-            dispatch(setFontFamily('2nd'))
-          }else if(value.selectedIndex === 3){
-            dispatch(setFontFamily('3rd'))
-          }else{
-            dispatch(setFontFamily('4th'))
-          }
         }
       };
       fetchMode();
@@ -117,12 +110,12 @@ function FontModeScreen(): React.JSX.Element {
         {isCheck && (
           <RadioBtnGroup
             names={[
-              {textName :'나눔명조', iconName : null, selected : 0},
-              {textName :'나눔손글씨 고려글꼴', iconName : null, selected : 1},
-              {textName :'순바탕', iconName : null, selected : 2},
-              {textName :'온글잎 김콩해', iconName : null, selected : 3},
-              {textName :'안동 이육사체', iconName : null, selected : 4},
-              {textName :'고도체', iconName : null, selected : 5},
+              {textName :'나눔명조', textFont : "NanumMyeongjo",iconName : null, selected : 0},
+              {textName :'나눔손글씨 고려글꼴', textFont : "NanumGoRyeoGeurGgor",iconName : null, selected : 1},
+              {textName :'순바탕', textFont : "SunBatang-Medium",iconName : null, selected : 2},
+              {textName :'온글잎 김콩해', textFont : "KimKongHae",iconName : null, selected : 3},
+              {textName :'안동 이육사체', textFont : "ANDONG 264 TTF",iconName : null, selected : 4},
+              {textName :'고도체', textFont : "GodoM",iconName : null, selected : 5},
             ]}
             onSelect={handleSelect} // 콜백 함수 전달
             selected={selected} // 선택된 라디오 버튼 인덱스 전달
