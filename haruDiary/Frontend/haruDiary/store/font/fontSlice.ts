@@ -5,12 +5,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface FontState {
   fontFamily: string;
-  fontSize : number;
+  fontSizeValue : number;
 }
 
 const initialState: FontState = {
   fontFamily: 'NanumMyeongjo', // 기본 폰트는 일단 'basic'
-  fontSize : 16, // 기본 폰트 사이즈는 16
+  fontSizeValue : 2, // 기본 폰트 사이즈는 2
 };
 
 const fontSlice = createSlice({
@@ -20,11 +20,11 @@ const fontSlice = createSlice({
     setFontFamily: (state, action: PayloadAction<string>) => {
       state.fontFamily = action.payload;
     },
-    setFontSize: (state, action: PayloadAction<number>) => {
-      state.fontSize = action.payload;
+    setFontSizeValue: (state, action: PayloadAction<number>) => {
+      state.fontSizeValue = action.payload;
     },
   },
 });
 
-export const { setFontFamily, setFontSize} = fontSlice.actions;
+export const { setFontFamily, setFontSizeValue} = fontSlice.actions;
 export default fontSlice.reducer;

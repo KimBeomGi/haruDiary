@@ -32,7 +32,7 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
   const mode = useSelector((state: RootState) => state.theme.mode)
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
   const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
-  const fontSize = useSelector((state: RootState) => state.font.fontSize)
+  const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
   /////////////////
   // const index = useNavigationState((state) => state.index) // stack index임
 

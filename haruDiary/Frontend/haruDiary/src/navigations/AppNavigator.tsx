@@ -92,7 +92,7 @@ function AppNavigator(): React.JSX.Element {
     ["온글잎 김콩해", "KimKongHae"], ["안동 이육사체", "ANDONG 264 TTF"], ["고도체", "GodoM"]
   ])
   const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
-  const fontSize = useSelector((state: RootState) => state.font.fontSize)
+  const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
   
 
   // 화면 모드는 라이트모드, 다크모드, 시스템모드 3가지. + 폰트

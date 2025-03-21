@@ -20,7 +20,7 @@ function WritePostScreen(): React.JSX.Element {
   const mode = useSelector((state: RootState) => state.theme.mode)
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
   const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
-  const fontSize = useSelector((state: RootState) => state.font.fontSize)
+  const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
   /////////////////
 
   return (
