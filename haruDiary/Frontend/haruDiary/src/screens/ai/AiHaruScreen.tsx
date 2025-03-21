@@ -8,6 +8,7 @@ import type { RootState } from '../../../store/store';
 import { useSelector, useDispatch } from 'react-redux'
 import BottomComponent from '../../components/BottomComponent';
 import { selectTab } from '../../../store/bottom/bottomTabSlice';
+import { getStyles } from '../../styles/styles';
 
 type AiHaruScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'AiHaru'>;
 
@@ -16,6 +17,13 @@ function AiHaruScreen(): React.JSX.Element {
   const navigation = useNavigation<AiHaruScreenNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  const styles =  getStyles()
+  // 초기 불러오기 위해서 style사용하기 위해서 얘를 안써도 등록
+  const mode = useSelector((state: RootState) => state.theme.mode)
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+  const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
+  const fontSize = useSelector((state: RootState) => state.font.fontSize)
+  /////////////////
 
   useFocusEffect(
       React.useCallback(() => {
@@ -26,51 +34,20 @@ function AiHaruScreen(): React.JSX.Element {
         };
       }, [])
     );
-    // useEffect(() => {
-    //   dispatch(selectTab(3))
-    // }, [])
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.content}>
         <View>
-          <Text>AiHaruScreen</Text>
-          <Text>잘되나</Text>
+          <Text
+            style={[styles.fs2]}
+          >AiHaruScreen
+          </Text>
         </View>
-        <Button
-          title='프로필'
-          onPress={() => {
-            // navigation.navigate('Home')
-            navigation.navigate('ProfileMain')
-          }}
-        />
-        <Button
-          title='포스트 자세히 보기'
-          onPress={() => {
-            navigation.navigate('DetailPost')
-          }}
-        />
-        <Button
-          title='글쓰기'
-          onPress={() => {
-            navigation.navigate('WritePost')
-          }}
-        />
-        <Text>현재 갯수는 : {count}개</Text>
       </ScrollView>
-      {/* <BottomComponent/> */}
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  content: {
-    flex: 1,
-  },
-});
 
 
 export default AiHaruScreen;

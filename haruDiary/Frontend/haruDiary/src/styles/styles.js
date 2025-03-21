@@ -1,25 +1,30 @@
 import { StyleSheet } from 'react-native';
 import { store } from '../../store/store'
-import { useEffect } from 'react';
 
 // 색상 상수 객체 생성
 const DARK_COLORS = {
   bgColor: '#1C1D1F',
   textColor : "#a0a0a0",
   bottomBgColor : "#363940",
-  // 다른 색상 상수 추가
 };
 
 const LIGHT_COLORS = {
   bgColor: '#FFFFFF',
   textColor : "#000000",
   bottomBgColor : "#f5f5f5",
-  // 다른 색상 상수 추가
 };
+
+const preparedFonts =[
+  ["나눔명조", "NanumMyeongjo"], ["나눔손글씨 고려글꼴","NanumGoRyeoGeurGgor"], ["순바탕", "SunBatang-Medium"], 
+  ["온글잎 김콩해", "KimKongHae"], ["안동 이육사체", "ANDONG 264 TTF"], ["고도체", "GodoM"]
+]
 
 // 테마에 따라 스타일 생성
 export const getStyles = () => {
   const isDarkMode = store.getState().theme.isDarkMode; // Redux 상태 가져오기
+  const usingFontFamilyIdx = store.getState().font.fontFmailyidx; // Redux 상태 가져오기
+  const usingFontFamily = store.getState().font.fontFamily; // Redux 상태 가져오기
+  // const usingFontFamily = preparedFonts[usingFontFamilyIdx][1]
   const COLORS = isDarkMode ? DARK_COLORS : LIGHT_COLORS;
 
   return StyleSheet.create({
@@ -68,30 +73,37 @@ export const getStyles = () => {
     fs0 : {
       fontSize : 8,
       color : COLORS.textColor,
+      fontFamily : usingFontFamily
     },
     fs1 : {
       fontSize : 12,
       color : COLORS.textColor,
+      fontFamily : usingFontFamily
     },
     fs2 : {
       fontSize : 16,
       color : COLORS.textColor,
+      fontFamily : usingFontFamily
     },
     fs3 : {
       fontSize : 20,
       color : COLORS.textColor,
+      fontFamily : usingFontFamily
     },
     fs4 : {
       fontSize : 24,
       color : COLORS.textColor,
+      fontFamily : usingFontFamily
     },
     fs5 : {
       fontSize : 28,
       color : COLORS.textColor,
+      fontFamily : usingFontFamily
     },
     fs6 : { // 사용할 일 없을 듯
       fontSize : 32,
       color : COLORS.textColor,
+      fontFamily : usingFontFamily
     },
     fw1 : { // 기본
       fontWeight : "400"

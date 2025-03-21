@@ -46,9 +46,10 @@ import BottomComponent from '../components/BottomComponent';
 import LDModeScreen from '../screens/setting/LDModeScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../store/store'; 
-import { isLightGet } from '../asyncStorage/asyncStorage';
+import { isLightGet, whatFontGet } from '../asyncStorage/asyncStorage';
 import { setIsDarkMode, setTheme } from '../../store/theme/themeSlice';
 import FontModeScreen from '../screens/setting/FontModeScreen';
+import { setFontFamily } from '../../store/font/fontSlice';
 
 
 export type RootStackParamList = {
@@ -83,22 +84,29 @@ function AppNavigator(): React.JSX.Element {
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
   // const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
   ////////////////////////////
+  const [preparedTheme, setPreparedTheme] = useState<[string, 'light' | 'dark' | 'system', string][]>([
+    ["라이트 모드", "light", "light-mode"], ["다크 모드", "dark", "dark-mode"], ["시스템 모드", "system", "wb-twilight"],
+  ])
+  const [preparedFonts, setPreparedFonts] = useState([
+    ["나눔명조", "NanumMyeongjo"], ["나눔손글씨 고려글꼴","NanumGoRyeoGeurGgor"], ["순바탕", "SunBatang-Medium"], 
+    ["온글잎 김콩해", "KimKongHae"], ["안동 이육사체", "ANDONG 264 TTF"], ["고도체", "GodoM"]
+  ])
+  const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
+  const fontSize = useSelector((state: RootState) => state.font.fontSize)
   
 
-  // 화면 모드는 라이트모드, 다크모드, 시스템모드 3가지.
+  // 화면 모드는 라이트모드, 다크모드, 시스템모드 3가지. + 폰트
   // 현재 aysncstorage에 저장된 모드가 뭔지 확인, 저장된 모드가 없다면 기본은 라이트 모드
   useEffect(() => {
     const fetchMode = async () => {
-      const value = await isLightGet()
-      if(value){
-        if(value.textName === '라이트 모드'){
-          dispatch(setTheme('light'))
-        }else if(value.textName === '다크 모드'){
-          dispatch(setTheme('dark'))
-        }else{
-          dispatch(setTheme('system'))
-        }
+      const themeValue = await isLightGet()
+      const fontValue = await whatFontGet()
+      if(themeValue){
+        dispatch(setTheme(preparedTheme[themeValue.selectedIndex][1]))
         // setIsLoading(false); // 테마 설정 완료 후 로딩 상태 변경
+      }
+      if(fontValue){
+        dispatch(setFontFamily(preparedFonts[fontValue.selectedIndex][1]))
       }
     }
     fetchMode()
@@ -123,14 +131,6 @@ function AppNavigator(): React.JSX.Element {
   // 이후 이를 styles/styles.js에 적용
   // 이 style을 각 screen에 적용
 
-  // if (isLoading) {
-  //   // 로딩 중일 때 로딩 화면 표시
-  //   return (
-  //     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-  //       <Text>Loading...</Text>
-  //     </View>
-  //   );
-  // }
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -140,7 +140,7 @@ function AppNavigator(): React.JSX.Element {
           // headerShown: true
           // animation : "fade"
           // animation : "none"
-          animation : "slide_from_right"
+          animation : "slide_from_right",
         })}
       >
         <Stack.Screen name="Home" component={HomeScreen} 

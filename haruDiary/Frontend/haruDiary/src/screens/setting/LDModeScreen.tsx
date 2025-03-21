@@ -29,8 +29,12 @@ function LDModeScreen(): React.JSX.Element {
   const [selectedMode, setSelectedMode] = useState('라이트 모드'); // 선택된 모드 상태 관리
   const [selected, setSelected] = useState(0)
   const [isCheck, setIsCheck] = useState(false)
+  // 초기 불러오기 위해서 style사용하기 위해서 얘를 안써도 등록
   const mode = useSelector((state: RootState) => state.theme.mode)
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+  const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
+  const fontSize = useSelector((state: RootState) => state.font.fontSize)
+  /////////////////
   const [preparedMode, setPreparedMode] = useState<[string, 'light' | 'dark' | 'system', string][]>([
     ["라이트 모드", "light", "light-mode"], ["다크 모드", "dark", "dark-mode"], ["시스템 모드", "system", "wb-twilight"],
   ])

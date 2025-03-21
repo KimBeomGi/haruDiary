@@ -9,7 +9,7 @@ interface FontState {
 }
 
 const initialState: FontState = {
-  fontFamily: 'basic', // 기본 폰트는 일단 'basic'
+  fontFamily: 'NanumMyeongjo', // 기본 폰트는 일단 'basic'
   fontSize : 16, // 기본 폰트 사이즈는 16
 };
 

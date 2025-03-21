@@ -28,31 +28,13 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
   const styles = getStyles()
+  // 초기 불러오기 위해서 style사용하기 위해서 얘를 안써도 등록
   const mode = useSelector((state: RootState) => state.theme.mode)
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+  const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
+  const fontSize = useSelector((state: RootState) => state.font.fontSize)
+  /////////////////
   // const index = useNavigationState((state) => state.index) // stack index임
-  
-  // 작동 불량
-  // useEffect(() => {
-  //   const backAction = () => {
-  //       Alert.alert("", "앱을 종료할까요?", [
-  //         {
-  //           text: '아니오',
-  //           onPress: () => null,
-  //           style: 'cancel',
-  //         },
-  //         {text: '네', onPress: () => BackHandler.exitApp()},
-  //       ]);
-  //       return true;
-  //     };
-
-  //   const backHandler = BackHandler.addEventListener(
-  //     'hardwareBackPress',
-  //     backAction,
-  //   );
-
-  //   return () => backHandler.remove();
-  // }, []);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -63,9 +45,6 @@ function HomeScreen({ route, navigation}:HomeScreenNavigationProp): React.JSX.El
       };
     }, [])  
   );
-    // useEffect(() => {
-    //   dispatch(selectTab(3))
-    // }, [])
 
   return (
     <SafeAreaView style={styles.container}>

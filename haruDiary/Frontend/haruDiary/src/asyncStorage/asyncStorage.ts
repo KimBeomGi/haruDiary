@@ -33,11 +33,12 @@ export const isLightGet = async () => {
 };
 
 // 폰트 저장
-export const whatFontSet = async (value1:String, value2:number) => {
+export const whatFontSet = async (value1:String, value2:String, value3:number) => {
   try {
     const value = {
       textName : value1,
-      selectedIndex : value2,
+      textFont : value2,
+      selectedIndex : value3,
     }
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem('whatFont', jsonValue);
@@ -53,7 +54,7 @@ export const whatFontGet = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem('whatFont');
     if(jsonValue === null){
-      whatFontSet('기본', 0)
+      whatFontSet('나눔명조', "NanumMyeongjo", 0)
       whatFontGet()
     }else{
       return JSON.parse(jsonValue);

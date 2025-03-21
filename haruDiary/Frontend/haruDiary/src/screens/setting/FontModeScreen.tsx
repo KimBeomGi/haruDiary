@@ -15,6 +15,7 @@ import RadioBtnGroup from '../../components/RadioBtnGroup';
 import { isLightGet, isLightSet, whatFontGet, whatFontSet } from '../../asyncStorage/asyncStorage';
 import { setFontFamily, setFontSize } from '../../../store/font/fontSlice';
 import { selectTab } from '../../../store/bottom/bottomTabSlice';
+import Slider from '@react-native-community/slider';
 
 
 
@@ -29,12 +30,15 @@ function FontModeScreen(): React.JSX.Element {
   const [selectedFont, setSelectedFont] = useState('기본'); // 선택된 모드 상태 관리
   const [selected, setSelected] = useState(0)
   const [isCheck, setIsCheck] = useState(false)
-  const fontfamily = useSelector((state: RootState) => state.font.fontFamily)
+  const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
   const [preparedFonts, setPreparedFonts] = useState([
     ["나눔명조", "NanumMyeongjo"], ["나눔손글씨 고려글꼴","NanumGoRyeoGeurGgor"], ["순바탕", "SunBatang-Medium"], 
     ["온글잎 김콩해", "KimKongHae"], ["안동 이육사체", "ANDONG 264 TTF"], ["고도체", "GodoM"]
   ])
   const [lorem, setLorem] = useState("우는 날들을 이런 없이 향할 회한도 걸 왔을까? 그 마른 동산에 너무나 하나였던 보내 시각에 타는 때. 건너온 기억해주오 편지도 하늘을 불러주던 밤을 잎들은 위에도 말했다. \n\n목란배 내지 번을 했던 아무 이네들은 있다. 부드럽게, 나는 별에도 생을 아무것도 이름자를 자신을 청명한 하나였던 이름과, 지우지 꽃을 생명을 가을 말없이 말 오매불망 아니라 했다.")
+
+  // 폰트사이즈
+  const [fontSizeValue, setFontSizeValue] = useState(3)
 
   // 라디오 버튼에 들어갈 내용들을 만들어주는 함수
   const getRadioBtnNames = (fonts: string[][]): { textName: string; textFont: string; iconName: null; selected: number }[] => {
@@ -48,9 +52,9 @@ function FontModeScreen(): React.JSX.Element {
 
   const handleSelect = (textName: string, selectedIndex: number) => {
     setSelectedFont(textName);
-    console.log(`Selected mode: ${textName}, index: ${selectedIndex}`);
+    // console.log(`Selected mode: ${textName}, index: ${selectedIndex}`);
     // // 선택된 모드에 따라 필요한 작업 수행
-    whatFontSet(textName, selectedIndex)
+    whatFontSet(textName, preparedFonts[selectedIndex][1], selectedIndex)
     // // store에 작업
     let fontFamily = preparedFonts[selectedIndex][1]
     dispatch(setFontFamily(fontFamily));
@@ -101,7 +105,19 @@ function FontModeScreen(): React.JSX.Element {
           {/* 슬라이더 */}
           {/* 라이브러리 이용해야겠군. */}
           <View>
-
+            <Slider
+              style={{width: 300, height: 40}}
+              value={fontSizeValue}
+              onValueChange={(value) => {return setFontSizeValue(value)}}
+              minimumValue={1}
+              maximumValue={5}
+              minimumTrackTintColor="#8fe3ff"
+              maximumTrackTintColor="#54d1fb"
+              step={1}
+            />
+            <Text>
+              fontSize : {fontSizeValue}
+            </Text>
           </View>
         </View>
 
@@ -122,7 +138,7 @@ function FontModeScreen(): React.JSX.Element {
             selected={selected} // 선택된 라디오 버튼 인덱스 전달
           />
         )}
-        <Text>{fontfamily}</Text>
+        <Text>{fontFamily}</Text>
         
       </ScrollView>
     </SafeAreaView>

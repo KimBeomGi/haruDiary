@@ -22,6 +22,12 @@ function BottomComponent(): React.JSX.Element {
   const selectTabIdx = useSelector((state: RootState) => state.bottomTab.value)
   const dispatch = useDispatch()
   const styles = getStyles()
+  // 초기 불러오기 위해서 style사용하기 위해서 얘를 안써도 등록
+  const mode = useSelector((state: RootState) => state.theme.mode)
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+  const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
+  const fontSize = useSelector((state: RootState) => state.font.fontSize)
+  /////////////////
 
   return (
     <SafeAreaView style={styles.btmContainer}>
@@ -55,9 +61,9 @@ function BottomComponent(): React.JSX.Element {
           navigation.navigate('SearchPost')
         }}
       >
-<Text>
+        <Text>
           <Icon name="history" color= {selectTabIdx === 1 ? "#c041ff" : "#a0a0a0"} size={24} />
-</Text>
+        </Text>
         <Text
           style={[styles.fs2]}
         >
