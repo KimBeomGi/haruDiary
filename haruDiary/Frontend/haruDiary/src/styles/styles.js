@@ -192,5 +192,13 @@ export const getStyles = () => {
       bottom : 20,
       right : 20,
     },
+    // AlarmSetModal 전용
+    alarmSmContainer : {
+      position : "absolute",
+      width : 300,
+      height : 200,
+      borderColor: "#000000",
+      backgroundColor : "#ffffff"
+    }
   });
 };

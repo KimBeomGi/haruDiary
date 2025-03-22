@@ -8,6 +8,7 @@ import type { RootState } from '../../../store/store';
 import { useSelector, useDispatch } from 'react-redux'
 import BottomComponent from '../../components/BottomComponent';
 import { getStyles } from '../../styles/styles';
+import AlarmSetModal from '../../modals/AlarmSetModal';
 
 type AlarmSetScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'AlarmSet'>;
 
@@ -23,15 +24,25 @@ function AlarmSetScreen(): React.JSX.Element {
   const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
   const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
   /////////////////
+  const [isAlarmSetOpen, setIsAlarmSetOpen] = useState(false)
+  const handleModalClose = () => {
+    setIsAlarmSetOpen(!isAlarmSetOpen);
+  };
 
   return (
     <SafeAreaView style={[styles.container, styles.pdvr2, styles.pdhr2]}>
-      <ScrollView style={[styles.content]}>
+      <TouchableOpacity 
+        style={[styles.content]}
+        activeOpacity={1}
+        onPress={() => {
+          if(isAlarmSetOpen) setIsAlarmSetOpen(!isAlarmSetOpen)
+        }}
+      >
         <View
           style={[styles.mgvr2, styles.dRowSB]}
         >
           <Text
-            style={[styles.fs3]}
+            style={[styles.fs3, styles.fw2]}
           >
             알림
           </Text>
@@ -42,6 +53,9 @@ function AlarmSetScreen(): React.JSX.Element {
         </View>
         <TouchableOpacity
           style={[styles.mgvr2, styles.dRowSB,]}
+          onPress={() => {
+            setIsAlarmSetOpen(!isAlarmSetOpen)
+          }}
         >
           <Text
             style={[styles.fs3]}
@@ -53,8 +67,12 @@ function AlarmSetScreen(): React.JSX.Element {
           >
             21:00
           </Text>
-        </TouchableOpacity>
-      </ScrollView>
+      </TouchableOpacity>
+      </TouchableOpacity>
+      {isAlarmSetOpen && (
+        // <AlarmSetModal isAlarmSetOpen={isAlarmSetOpen} handleModalClose={handleModalClose}/>
+        <AlarmSetModal handleModalClose={handleModalClose}/>
+      )}
     </SafeAreaView>
   );
 }
