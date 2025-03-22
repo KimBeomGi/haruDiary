@@ -10,7 +10,8 @@ import BottomComponent from '../../components/BottomComponent';
 import { getStyles } from '../../styles/styles';
 import AlarmSetModal from '../../modals/AlarmSetModal';
 import { selectTab } from '../../../store/bottom/bottomTabSlice';
-import DateTimePicker from '@react-native-community/datetimepicker'; // 알림 시간 조정에 쓰임임
+import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker'; // 알림 시간 조정에 쓰임임
+import { whenAlarmTimeGet, whenAlarmTimeSet } from '../../asyncStorage/asyncStorage';
 
 type AlarmSetScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'AlarmSet'>;
 
@@ -30,16 +31,44 @@ function AlarmSetScreen(): React.JSX.Element {
 
   ///알림 시간 조정
   const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState(date.toTimeString().slice(0,5))
+  const [time, setTime] = useState("21:00")
   const [dateTimeMode, setDateTimeMode] = useState<'time'|'date'>('time');
   // const [show, setShow] = useState(false);
 
-  const onChange = (event:any, selectedDate: any) => {
+  const onChange = (event:DateTimePickerEvent, selectedDate: Date|undefined) => {
     const currentDate = selectedDate;
     setIsAlarmSetOpen(false)
-    setDate(currentDate);
-    setTime(currentDate.toTimeString().slice(0,5))
+    if(currentDate){
+      setDate(currentDate);
+      setTime(currentDate.toTimeString().slice(0,5))
+      whenAlarmTimeSet(selectedDate.getTime())// 선택한 Date getTime으로 unix 타임스탬프로 변환후 저장하기
+    }
   };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      // Do something when the screen is focused
+      dispatch(selectTab(3))// bottomtab의 표시
+
+      const fetchMode = async () => {
+        const value = await whenAlarmTimeGet();
+        // console.log(value);
+        if (value) {
+          setDate(new Date(value.theDate))  // unix 타임스탬프로 변환해서 저장한 것을 다시 Date형식으로 변환
+          setTime(new Date(value.theDate).toTimeString().slice(0,5))
+          // setIsCheck(true)  // value가 들어온 후에 렌더링하기 위함.
+        }
+      };
+      fetchMode();
+
+      return () => {
+        setIsAlarmSetOpen(false)
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      };
+    }, [dispatch])
+  );
+
   /////////////////////////////////
 
   useFocusEffect(
@@ -93,7 +122,7 @@ function AlarmSetScreen(): React.JSX.Element {
             {time}
           </Text>
         </TouchableOpacity>
-        <Text>selected: {date.toTimeString()}</Text>
+        {/* <Text>selected: {date.getTime()}</Text> */}
 
       </TouchableOpacity>
       {isAlarmSetOpen && (
@@ -104,7 +133,7 @@ function AlarmSetScreen(): React.JSX.Element {
           value={date}
           mode={dateTimeMode}
           is24Hour={true}
-          onChange={onChange}
+          onChange={(event, date) => {onChange(event, date)}}
           display="default"
           fullscreen={true}
         />
