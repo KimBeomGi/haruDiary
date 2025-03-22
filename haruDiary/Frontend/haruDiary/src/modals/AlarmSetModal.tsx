@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
+import { SafeAreaView, Text, View, StyleSheet, TouchableOpacity, Animated, Button, Platform, TextInput } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
 import { RouteProp } from '@react-navigation/native';
@@ -11,11 +11,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import { getStyles } from '../styles/styles';
 
-//
-import { Button } from 'react-native-paper';
-import { TimePickerModal } from 'react-native-paper-dates';
-import { SafeAreaProvider } from "react-native-safe-area-context";
-//
+// import DatePicker from 'react-native-date-picker'
+
 
 type AlarmSetModalNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -24,67 +21,94 @@ type AlarmSetModalParam = {
   handleModalClose : () => void;
 }
 
-
 function AlarmSetModal(param: AlarmSetModalParam): React.JSX.Element {
   const navigation = useNavigation<AlarmSetModalNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
   const styles = getStyles()
-  const [rotation, setRotation] = useState(0)
-  const rotationValue = useState(new Animated.Value(0))[0];
   // const [isAlarmSetOpen, setIsAlarmSetOpen] = useState(param.isAlarmSetOpen)
-  //
-  const [visible, setVisible] = React.useState(false)
-  const onDismiss = React.useCallback(() => {
-    setVisible(false)
-  }, [setVisible])
 
-  const onConfirm = React.useCallback(
-    ({ hours, minutes } : any) => {
-      setVisible(false);
-      console.log({ hours, minutes });
-    },
-    [setVisible]
-  );
-  ////
-
+  // const [date, setDate] = useState(new Date())
+  const [time, setTime] = useState({
+    hours : '21',
+    minutes : '00',
+  })
+  
   return (
     <SafeAreaView
-      style={[styles.alarmSmContainer]}
+    style={[styles.alarmSMContainer]}
     >
-      <View>
-        {/* <Text
-          style={[styles.fs4]}
-        >
-          알람 모달
-        </Text> */}
-        <View 
-        // style={{justifyContent: 'center', flex: 1, alignItems: 'center'}}
-        >
-          <Button onPress={() => setVisible(true)} uppercase={false} mode="outlined">
-            Pick time
-          </Button>
-          <TimePickerModal
-            visible={visible}
-            onDismiss={onDismiss}
-            onConfirm={onConfirm}
-            hours={12}
-            minutes={14}
-          />
-        </View>
-        
-        <TouchableOpacity
-          onPress={() => {
-            // setIsAlarmSetOpen(!isAlarmSetOpen)
-            param.handleModalClose()
-          }}
+      <View
+        style={[styles.alarmSMContent]}
+      >
+        <View
+          style={[styles.dRowJC]}
         >
           <Text
-            style={[styles.fs4]}
+            style={[styles.fs3]}
           >
-            취소
+            알림 시간
           </Text>
-        </TouchableOpacity>
+        </View>
+        <View
+          style={[styles.dRowJC]}
+        >
+          <TextInput
+            style={[]}
+            value={time.hours}
+            keyboardType="number-pad"
+            onChangeText={(value) => {
+              const tmp = {
+                hours : value,
+                minutes : time.minutes
+              }
+              setTime(tmp)
+            }}
+          />
+          <Text
+            style={[]}
+          >
+            :
+          </Text>
+          <TextInput
+            style={[]}
+            value={time.minutes}
+            keyboardType="number-pad"
+            onChangeText={(value) => {
+              const tmp = {
+                hours : time.hours,
+                minutes : value
+              }
+              setTime(tmp)
+            }}
+          />
+        </View>
+        <View
+          style={[styles.dRowSB]}
+        >
+          <TouchableOpacity
+            onPress={() => {
+              // param.handleModalClose()
+            }}
+          >
+            <Text
+              style={[styles.fs4]}
+              >
+              취소
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              // param.handleModalClose()
+            }}
+          >
+            <Text
+              style={[styles.fs4]}
+              >
+              확인
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );

@@ -4,7 +4,8 @@ import { store } from '../../store/store'
 // 색상 상수 객체 생성
 const DARK_COLORS = {
   bgColor: '#1C1D1F',
-  textColor : "#a0a0a0",
+  // textColor : "#a0a0a0",
+  textColor :"#eeeeee",
   bottomBgColor : "#363940",
   headerIconColor : "#b485ff",
   headerBgColor: "#1C1D1F",
@@ -70,6 +71,11 @@ export const getStyles = () => {
     },
     dRow : {
       flexDirection : "row",
+      alignItems : 'center', // 가지런하게 좌우 열이 맞게.
+    },
+    dRowJC : {
+      flexDirection : "row",
+      justifyContent: "center",
       alignItems : 'center', // 가지런하게 좌우 열이 맞게.
     },
     dRowSB : {
@@ -193,12 +199,27 @@ export const getStyles = () => {
       right : 20,
     },
     // AlarmSetModal 전용
-    alarmSmContainer : {
-      position : "absolute",
-      width : 300,
-      height : 200,
+    alarmSMContainer : {
+      position:"absolute",
+      width: "100%",
+      height: "50%",
+      left: 16,
+      top: 200,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // width : 300,
+      // height : 200,
       borderColor: "#000000",
-      backgroundColor : "#ffffff"
-    }
+      borderWidth : 1,
+      borderRadius : 20,
+      backgroundColor : COLORS.headerBgColor
+    },
+    alarmSMContent: {
+      backgroundColor:'gray', 
+      width:"90%",
+      height:"90%",
+      justifyContent: "center",
+      // alignItems: "center",
+    },
   });
 };

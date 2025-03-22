@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, Button, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import BottomComponent from '../../components/BottomComponent';
 import { getStyles } from '../../styles/styles';
 import AlarmSetModal from '../../modals/AlarmSetModal';
+import { selectTab } from '../../../store/bottom/bottomTabSlice';
 
 type AlarmSetScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'AlarmSet'>;
 
@@ -25,9 +26,21 @@ function AlarmSetScreen(): React.JSX.Element {
   const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
   /////////////////
   const [isAlarmSetOpen, setIsAlarmSetOpen] = useState(false)
+
   const handleModalClose = () => {
     setIsAlarmSetOpen(!isAlarmSetOpen);
   };
+  useFocusEffect(
+    React.useCallback(() => {
+      // Do something when the screen is focused
+      dispatch(selectTab(3))// bottomtab의 표시
+      return () => {
+        setIsAlarmSetOpen(false)
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      };
+    }, [])
+  );
 
   return (
     <SafeAreaView style={[styles.container, styles.pdvr2, styles.pdhr2]}>

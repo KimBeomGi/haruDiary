@@ -35,31 +35,6 @@ import type {
 } from '@react-navigation/native';
 import { isLightGet, isLightSet } from './src/asyncStorage/asyncStorage';
 
-// react-native-paper-dates 적용
-import { ko, registerTranslation } from 'react-native-paper-dates'
-registerTranslation('ko', ko)
-////// 또는
-// import { registerTranslation } from 'react-native-paper-dates'
-// registerTranslation('pl', {
-//   save: 'Save',
-//   selectSingle: 'Select date',
-//   selectMultiple: 'Select dates',
-//   selectRange: 'Select period',
-//   notAccordingToDateFormat: (inputFormat) =>
-//     `Date format must be ${inputFormat}`,
-//   mustBeHigherThan: (date) => `Must be later then ${date}`,
-//   mustBeLowerThan: (date) => `Must be earlier then ${date}`,
-//   mustBeBetween: (startDate, endDate) =>
-//     `Must be between ${startDate} - ${endDate}`,
-//   dateIsDisabled: 'Day is not allowed',
-//   previous: 'Previous',
-//   next: 'Next',
-//   typeInDate: 'Type in date',
-//   pickDateFromCalendar: 'Pick date from calendar',
-//   close: 'Close',
-// })
-//////////////////////
-
 function App(): React.JSX.Element {
   return (
     <Provider store={store}>
