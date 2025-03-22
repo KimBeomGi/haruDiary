@@ -9,6 +9,7 @@ import type { RootState } from '../../store/store';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
+import { getStyles } from '../styles/styles';
 
 type WriteBtnComponentNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -17,6 +18,7 @@ function WriteBtnComponent(): React.JSX.Element {
   const navigation = useNavigation<WriteBtnComponentNavigationProp>()
   const count = useSelector((state: RootState) => state.counter.value)
   const dispatch = useDispatch()
+  const styles = getStyles()
   const [rotation, setRotation] = useState(0)
   const rotationValue = useState(new Animated.Value(0))[0];
 
@@ -58,21 +60,5 @@ function WriteBtnComponent(): React.JSX.Element {
     
   );
 }
-
-const styles = StyleSheet.create({
-  writebBtn: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems : 'center',
-    backgroundColor: '#9355ff',
-    width: 50,
-    height : 50,
-    borderRadius : 25,
-    position : "absolute",
-    zIndex : 2,
-    bottom : 20,
-    right : 20,
-  },
-});
 
 export default WriteBtnComponent;

@@ -177,6 +177,20 @@ export const getStyles = () => {
     },
     btmEachPosition: {
       alignItems: 'center',
-    }
+    },
+    // 화면 밖 글쓰기 버튼
+    writebBtn: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems : 'center',
+      backgroundColor: '#9355ff',
+      width: 50,
+      height : 50,
+      borderRadius : 25,
+      position : "absolute",
+      zIndex : 2,
+      bottom : 20,
+      right : 20,
+    },
   });
 };
