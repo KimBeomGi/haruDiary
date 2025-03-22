@@ -19,7 +19,7 @@ function AiHaruScreen(): React.JSX.Element {
   const dispatch = useDispatch()
   const styles =  getStyles()
   // 초기 불러오기 위해서 style사용하기 위해서 얘를 안써도 등록
-  const mode = useSelector((state: RootState) => state.theme.mode)
+  const themeMode = useSelector((state: RootState) => state.theme.mode)
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
   const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
   const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
@@ -43,7 +43,7 @@ function AiHaruScreen(): React.JSX.Element {
             style={[styles.fs2]}
           >AiHaruScreen
           </Text>
-        </View>
+        </View>        
       </ScrollView>
     </SafeAreaView>
   );

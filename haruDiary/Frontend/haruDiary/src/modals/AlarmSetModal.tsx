@@ -12,6 +12,8 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import { getStyles } from '../styles/styles';
 
 // import DatePicker from 'react-native-date-picker'
+import DateTimePicker from '@react-native-community/datetimepicker';
+
 
 
 type AlarmSetModalNavigationProp = NativeStackNavigationProp<RootStackParamList>;

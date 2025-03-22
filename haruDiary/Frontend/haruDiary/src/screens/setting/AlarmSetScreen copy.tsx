@@ -10,7 +10,6 @@ import BottomComponent from '../../components/BottomComponent';
 import { getStyles } from '../../styles/styles';
 import AlarmSetModal from '../../modals/AlarmSetModal';
 import { selectTab } from '../../../store/bottom/bottomTabSlice';
-import DateTimePicker from '@react-native-community/datetimepicker'; // 알림 시간 조정에 쓰임임
 
 type AlarmSetScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'AlarmSet'>;
 
@@ -21,27 +20,16 @@ function AlarmSetScreen(): React.JSX.Element {
   const dispatch = useDispatch()
   const styles = getStyles()
   // 초기 불러오기 위해서 style사용하기 위해서 얘를 안써도 등록
-  const themeMode = useSelector((state: RootState) => state.theme.mode)
+  const mode = useSelector((state: RootState) => state.theme.mode)
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
   const fontFamily = useSelector((state: RootState) => state.font.fontFamily)
   const fontSizeValue = useSelector((state: RootState) => state.font.fontSizeValue)
   /////////////////
   const [isAlarmSetOpen, setIsAlarmSetOpen] = useState(false)
 
-  ///알림 시간 조정
-  const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState(date.toTimeString().slice(0,5))
-  const [dateTimeMode, setDateTimeMode] = useState<'time'|'date'>('time');
-  // const [show, setShow] = useState(false);
-
-  const onChange = (event:any, selectedDate: any) => {
-    const currentDate = selectedDate;
-    setIsAlarmSetOpen(false)
-    setDate(currentDate);
-    setTime(currentDate.toTimeString().slice(0,5))
+  const handleModalClose = () => {
+    setIsAlarmSetOpen(!isAlarmSetOpen);
   };
-  /////////////////////////////////
-
   useFocusEffect(
     React.useCallback(() => {
       // Do something when the screen is focused
@@ -90,24 +78,13 @@ function AlarmSetScreen(): React.JSX.Element {
           <Text
             style={[styles.fs3]}
           >
-            {time}
+            21:00
           </Text>
-        </TouchableOpacity>
-        <Text>selected: {date.toTimeString()}</Text>
-
+      </TouchableOpacity>
       </TouchableOpacity>
       {isAlarmSetOpen && (
         // <AlarmSetModal isAlarmSetOpen={isAlarmSetOpen} handleModalClose={handleModalClose}/>
-        // <AlarmSetModal handleModalClose={handleModalClose}/>
-        <DateTimePicker
-          // testID="dateTimePicker"
-          value={date}
-          mode={dateTimeMode}
-          is24Hour={true}
-          onChange={onChange}
-          display="default"
-          fullscreen={true}
-        />
+        <AlarmSetModal handleModalClose={handleModalClose}/>
       )}
     </SafeAreaView>
   );
