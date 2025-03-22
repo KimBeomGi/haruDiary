@@ -33,6 +33,22 @@ function AlarmSetModal(param: AlarmSetModalParam): React.JSX.Element {
     hours : '21',
     minutes : '00',
   })
+
+  const handleHoursChange = (value: string) => {
+    const hours = parseInt(value, 10);
+    if (isNaN(hours) || hours < 0 || hours > 23) {
+      return ; // 유효하지 않은 입력 무시
+    }
+    setTime({ ...time, hours: value }); // 2자리 형식으로 자동 완성
+  };
+
+  const handleMinutesChange = (value: string) => {
+    const minutes = parseInt(value, 10);
+    if (isNaN(minutes) || minutes < 0 || minutes > 59) {
+      return ; // 유효하지 않은 입력 무시
+    }
+    setTime({ ...time, minutes: value }); // 2자리 형식으로 자동 완성
+  };
   
   return (
     <SafeAreaView
@@ -57,13 +73,8 @@ function AlarmSetModal(param: AlarmSetModalParam): React.JSX.Element {
             style={[]}
             value={time.hours}
             keyboardType="number-pad"
-            onChangeText={(value) => {
-              const tmp = {
-                hours : value,
-                minutes : time.minutes
-              }
-              setTime(tmp)
-            }}
+            maxLength={2}
+            onChangeText={handleHoursChange}
           />
           <Text
             style={[]}
@@ -74,13 +85,8 @@ function AlarmSetModal(param: AlarmSetModalParam): React.JSX.Element {
             style={[]}
             value={time.minutes}
             keyboardType="number-pad"
-            onChangeText={(value) => {
-              const tmp = {
-                hours : time.hours,
-                minutes : value
-              }
-              setTime(tmp)
-            }}
+            maxLength={2}
+            onChangeText={handleMinutesChange}
           />
         </View>
         <View
