@@ -12,6 +12,8 @@ import AlarmSetModal from '../../modals/AlarmSetModal';
 import { selectTab } from '../../../store/bottom/bottomTabSlice';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker'; // 알림 시간 조정에 쓰임임
 import { whenAlarmTimeGet, whenAlarmTimeSet } from '../../asyncStorage/asyncStorage';
+import notifee, { AndroidColor } from '@notifee/react-native';
+
 
 type AlarmSetScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'AlarmSet'>;
 
@@ -83,6 +85,33 @@ function AlarmSetScreen(): React.JSX.Element {
     }, [])
   );
 
+  ///// push 알람을 위한 notifee코드
+  async function onDisplayNotification() {
+    // Request permissions (required for iOS)
+    await notifee.requestPermission()
+
+    // Create a channel (required for Android)
+    const channelId = await notifee.createChannel({
+      id: 'default',
+      name: 'Default Channel',
+    });
+
+    // Display a notification
+    await notifee.displayNotification({
+      title: '일기 작성 시간!',  //Notification Title
+      body: '하루일기에서 오늘의 이야기를 작성해보세요.', //Main body content of the notification
+      android: {
+        channelId,
+        // smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
+        // pressAction is needed if you want the notification to open the app when pressed
+        pressAction: {
+          id: 'default',
+        },
+      },
+    });
+  }
+  ////
+
   return (
     <SafeAreaView style={[styles.container, styles.pdvr2, styles.pdhr2]}>
       <TouchableOpacity 
@@ -123,8 +152,11 @@ function AlarmSetScreen(): React.JSX.Element {
           </Text>
         </TouchableOpacity>
         {/* <Text>selected: {date.getTime()}</Text> */}
-
+        <View>
+          <Button title="Display Notification" onPress={() => onDisplayNotification()} />
+        </View>
       </TouchableOpacity>
+
       {isAlarmSetOpen && (
         // <AlarmSetModal isAlarmSetOpen={isAlarmSetOpen} handleModalClose={handleModalClose}/>
         // <AlarmSetModal handleModalClose={handleModalClose}/>
@@ -135,7 +167,6 @@ function AlarmSetScreen(): React.JSX.Element {
           is24Hour={true}
           onChange={(event, date) => {onChange(event, date)}}
           display="default"
-          fullscreen={true}
         />
       )}
     </SafeAreaView>
