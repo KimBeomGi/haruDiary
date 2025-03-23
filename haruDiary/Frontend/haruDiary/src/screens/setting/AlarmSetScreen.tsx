@@ -1,6 +1,6 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, Button, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { SafeAreaView, Text, View, Button, StyleSheet, ScrollView, TouchableOpacity, Switch } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigations/AppNavigator'; // RootStackParamList를 가져옵니다.
 
@@ -36,16 +36,26 @@ function AlarmSetScreen(): React.JSX.Element {
   const [time, setTime] = useState("21:00")
   const [dateTimeMode, setDateTimeMode] = useState<'time'|'date'>('time');
   // const [show, setShow] = useState(false);
+  // 알림 토글
+  const [isAlarmEnabled, setIsAlarmEnabled] = useState(false); // 토글 상태
+  const [triggerId, setTriggerId] = useState<string | null>(null); // 예약된 알림의 triggerId
 
-  const onChange = (event:DateTimePickerEvent, selectedDate: Date|undefined) => {
+  const handleAlarmTime = (event:DateTimePickerEvent, selectedDate: Date|undefined) => {
     const currentDate = selectedDate;
     setIsAlarmSetOpen(false)
     if(currentDate){
       setDate(currentDate);
       setTime(currentDate.toTimeString().slice(0,5))
-      whenAlarmTimeSet(selectedDate.getTime())// 선택한 Date getTime으로 unix 타임스탬프로 변환후 저장하기
+      whenAlarmTimeSet(selectedDate.getTime(), isAlarmEnabled)// 선택한 Date getTime으로 unix 타임스탬프로 변환후 저장하기
     }
   };
+  
+  const handleIsAlarmEnabled = () => {
+    const tmp = !isAlarmEnabled
+    setIsAlarmEnabled(tmp)
+    whenAlarmTimeSet(date.getTime(), tmp)
+  }
+
 
   useFocusEffect(
     React.useCallback(() => {
@@ -58,6 +68,7 @@ function AlarmSetScreen(): React.JSX.Element {
         if (value) {
           setDate(new Date(value.theDate))  // unix 타임스탬프로 변환해서 저장한 것을 다시 Date형식으로 변환
           setTime(new Date(value.theDate).toTimeString().slice(0,5))
+          setIsAlarmEnabled(value.isAlaramEnabled)
           // setIsCheck(true)  // value가 들어온 후에 렌더링하기 위함.
         }
       };
@@ -96,6 +107,19 @@ function AlarmSetScreen(): React.JSX.Element {
       name: 'Default Channel',
     });
 
+    // Required for iOS
+    // See https://notifee.app/react-native/docs/ios/permissions
+    await notifee.requestPermission();
+
+    // const notificationId = await notifee.displayNotification({
+    //   id: '123',
+    //   title: 'Notification Title',
+    //   body: 'Main body content of the notification',
+    //   android: {
+    //     channelId,
+    //   },
+    // });
+
     // Display a notification
     await notifee.displayNotification({
       title: '일기 작성 시간!',  //Notification Title
@@ -131,7 +155,14 @@ function AlarmSetScreen(): React.JSX.Element {
           </Text>
           {/* 토글 버튼 */}
           <View>
-
+            <Switch
+              trackColor={{false: '#767577', true: '#81b0ff'}}
+              thumbColor={isAlarmEnabled ? '#b485ff' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              // onValueChange={() => setIsAlarmEnabled(previousState => !previousState)}
+              onValueChange={() => handleIsAlarmEnabled()}
+              value={isAlarmEnabled}
+            />
           </View>
         </View>
         <TouchableOpacity
@@ -165,7 +196,7 @@ function AlarmSetScreen(): React.JSX.Element {
           value={date}
           mode={dateTimeMode}
           is24Hour={true}
-          onChange={(event, date) => {onChange(event, date)}}
+          onChange={(event, date) => {handleAlarmTime(event, date)}}
           display="default"
         />
       )}

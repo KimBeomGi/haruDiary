@@ -97,10 +97,11 @@ export const whatFSValueGet = async () => {
 };
 
 // 알림 시간 저장
-export const whenAlarmTimeSet = async (value1:number) => {
+export const whenAlarmTimeSet = async (value1:number, value2:boolean) => {
   try {
     const value = {
       theDate : value1,
+      isAlaramEnabled : value2
     }
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem('whenAlarmTime', jsonValue);
@@ -117,7 +118,7 @@ export const whenAlarmTimeGet = async () => {
     const jsonValue = await AsyncStorage.getItem('whenAlarmTime');
     if(jsonValue === null){
       const now = new Date()
-      whenAlarmTimeSet(now.getTime())
+      whenAlarmTimeSet(now.getTime(), true)
       whenAlarmTimeGet()
     }else{
       return JSON.parse(jsonValue);
