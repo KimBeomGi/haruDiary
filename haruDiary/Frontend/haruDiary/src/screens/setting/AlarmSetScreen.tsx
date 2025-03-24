@@ -55,9 +55,13 @@ function AlarmSetScreen(): React.JSX.Element {
   
   const handleIsAlarmEnabled = () => {
     const tmp = !isAlarmEnabled
-    if(!tmp){
-      cancelAlarm()
-    }else{
+    // if(!tmp){
+    //   cancelAlarm()
+    // }else{
+    //   scheduleAlarm()
+    // }
+    cancelAlarm() // 푸시알림을 다룰때 기존의 알람을 제거해주고 조정
+    if(tmp){
       scheduleAlarm()
     }
     setIsAlarmEnabled(tmp)
